@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>DescontaJá - Cupons & Ofertas</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Promify — Descontos em Cinema, Viagens e Shows</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Bebas+Neue&display=swap" rel="stylesheet">
 
 <style>
+
 *{
     margin:0;
     padding:0;
@@ -16,40 +20,81 @@
 }
 
 body{
-    font-family:'Inter',sans-serif;
-    background:#0f1115;
+    background:#070b14;
     color:white;
+    font-family:'Outfit',sans-serif;
     overflow-x:hidden;
 }
 
+/* SCROLLBAR */
+
+::-webkit-scrollbar{
+    width:10px;
+}
+
+::-webkit-scrollbar-thumb{
+    background:#00e0ff;
+    border-radius:20px;
+}
+
+/* BACKGROUND EFFECT */
+
+.bg-glow{
+    position:fixed;
+    width:700px;
+    height:700px;
+    background:#00e0ff25;
+    filter:blur(120px);
+    top:-250px;
+    right:-200px;
+    z-index:-1;
+}
+
+.bg-glow2{
+    position:fixed;
+    width:600px;
+    height:600px;
+    background:#ff00aa20;
+    filter:blur(120px);
+    bottom:-250px;
+    left:-200px;
+    z-index:-1;
+}
+
+/* HEADER */
+
 header{
-    padding:25px 6%;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    border-bottom:1px solid rgba(255,255,255,.08);
-    position:sticky;
+    position:fixed;
+    width:100%;
     top:0;
-    backdrop-filter:blur(14px);
-    background:rgba(15,17,21,.9);
     z-index:999;
+    backdrop-filter:blur(20px);
+    background:rgba(7,11,20,.75);
+    border-bottom:1px solid rgba(255,255,255,.05);
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:22px 6%;
 }
 
 .logo{
-    font-size:1.8rem;
-    font-weight:800;
+    font-family:'Bebas Neue',sans-serif;
+    font-size:2.7rem;
+    letter-spacing:2px;
     color:#00e0ff;
 }
 
 nav{
     display:flex;
-    gap:24px;
+    gap:35px;
 }
 
 nav a{
-    color:#cfcfcf;
     text-decoration:none;
-    transition:.2s;
+    color:#d5d5d5;
+    transition:.3s;
     font-weight:500;
 }
 
@@ -57,331 +102,446 @@ nav a:hover{
     color:#00e0ff;
 }
 
+.header-btn{
+    background:linear-gradient(135deg,#00e0ff,#00aaff);
+    border:none;
+    padding:14px 22px;
+    border-radius:14px;
+    color:#000;
+    font-weight:800;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.header-btn:hover{
+    transform:scale(1.05);
+}
+
+/* HERO */
+
 .hero{
-    padding:90px 6%;
+    min-height:100vh;
     display:grid;
-    grid-template-columns:1fr 1fr;
+    grid-template-columns:1.1fr 1fr;
     align-items:center;
-    gap:50px;
+    padding:140px 6% 80px;
+    gap:60px;
+}
+
+.hero-text small{
+    background:#00e0ff15;
+    color:#00e0ff;
+    padding:10px 18px;
+    border-radius:999px;
+    border:1px solid #00e0ff35;
+    font-weight:600;
 }
 
 .hero-text h1{
-    font-size:4rem;
-    line-height:1.1;
-    margin-bottom:20px;
+    margin-top:28px;
+    font-size:6rem;
+    line-height:.95;
+    font-weight:900;
 }
 
-.hero-text span{
+.hero-text h1 span{
     color:#00e0ff;
 }
 
 .hero-text p{
-    color:#bcbcbc;
-    line-height:1.7;
-    margin-bottom:30px;
-    max-width:600px;
+    margin-top:28px;
+    color:#bdbdbd;
+    line-height:1.8;
+    max-width:650px;
+    font-size:1.05rem;
 }
 
-.search-box{
-    display:flex;
-    gap:10px;
-}
-
-.search-box input{
-    flex:1;
-    padding:18px;
-    border:none;
-    border-radius:16px;
-    background:#1a1d25;
-    color:white;
-    font-size:1rem;
-}
-
-.search-box button{
-    padding:18px 25px;
-    border:none;
-    border-radius:16px;
-    background:#00e0ff;
-    color:#000;
-    font-weight:700;
-    cursor:pointer;
-    transition:.2s;
-}
-
-.search-box button:hover{
-    transform:translateY(-2px);
-}
-
-.hero-card{
-    background:linear-gradient(145deg,#151923,#1f2430);
-    border:1px solid rgba(255,255,255,.08);
-    padding:30px;
-    border-radius:30px;
-    box-shadow:0 20px 40px rgba(0,0,0,.3);
-}
-
-.discount-preview{
-    background:#00e0ff;
-    color:#000;
-    padding:20px;
-    border-radius:20px;
-    margin-bottom:18px;
-}
-
-.discount-preview h2{
-    font-size:2.2rem;
-}
-
-.discount-preview p{
-    font-weight:600;
-}
-
-.section{
-    padding:60px 6%;
-}
-
-.section-title{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    margin-bottom:30px;
-}
-
-.section-title h2{
-    font-size:2rem;
-}
-
-.cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
-    gap:22px;
-}
-
-.card{
-    background:#171b23;
-    border-radius:24px;
-    overflow:hidden;
-    border:1px solid rgba(255,255,255,.07);
-    transition:.25s;
-}
-
-.card:hover{
-    transform:translateY(-6px);
-}
-
-.card img{
-    width:100%;
-    height:180px;
-    object-fit:cover;
-}
-
-.card-content{
-    padding:22px;
-}
-
-.badge{
-    background:#00e0ff;
-    color:#000;
-    font-size:.8rem;
-    padding:6px 10px;
-    border-radius:999px;
-    display:inline-block;
-    font-weight:700;
-    margin-bottom:14px;
-}
-
-.card-content h3{
-    margin-bottom:10px;
-}
-
-.card-content p{
-    color:#b5b5b5;
-    line-height:1.6;
-    margin-bottom:18px;
-}
-
-.price{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    margin-bottom:20px;
-}
-
-.old{
-    text-decoration:line-through;
-    color:#888;
-}
-
-.new{
-    font-size:1.5rem;
-    font-weight:800;
-    color:#00e0ff;
-}
-
-.card button{
-    width:100%;
-    border:none;
-    background:#00e0ff;
-    color:#000;
-    padding:15px;
-    border-radius:14px;
-    font-weight:700;
-    cursor:pointer;
-}
-
-.categories{
+.hero-buttons{
+    margin-top:35px;
     display:flex;
     gap:16px;
     flex-wrap:wrap;
 }
 
-.category{
-    background:#171b23;
-    padding:16px 22px;
+.primary-btn{
+    background:linear-gradient(135deg,#00e0ff,#00aaff);
+    color:#000;
+    border:none;
+    padding:18px 30px;
     border-radius:18px;
-    border:1px solid rgba(255,255,255,.06);
+    font-weight:800;
     cursor:pointer;
-    transition:.2s;
+    font-size:1rem;
+    transition:.3s;
 }
 
-.category:hover{
-    background:#00e0ff;
-    color:#000;
+.primary-btn:hover{
+    transform:translateY(-4px);
 }
+
+.secondary-btn{
+    background:transparent;
+    color:white;
+    border:1px solid rgba(255,255,255,.15);
+    padding:18px 30px;
+    border-radius:18px;
+    font-weight:700;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.secondary-btn:hover{
+    background:white;
+    color:black;
+}
+
+.hero-image{
+    position:relative;
+}
+
+.hero-image img{
+    width:100%;
+    border-radius:35px;
+    box-shadow:0 40px 80px rgba(0,0,0,.45);
+}
+
+/* FLOATING CARD */
+
+.floating-card{
+    position:absolute;
+    bottom:-40px;
+    left:-40px;
+    background:#101826;
+    border:1px solid rgba(255,255,255,.08);
+    padding:24px;
+    border-radius:24px;
+    width:260px;
+    backdrop-filter:blur(20px);
+    box-shadow:0 20px 50px rgba(0,0,0,.4);
+}
+
+.floating-card h3{
+    color:#00e0ff;
+    font-size:2.2rem;
+}
+
+.floating-card p{
+    color:#b8b8b8;
+    margin-top:8px;
+}
+
+/* SECTION */
+
+.section{
+    padding:100px 6%;
+}
+
+.section-title{
+    margin-bottom:50px;
+}
+
+.section-title h2{
+    font-size:3rem;
+    font-weight:900;
+}
+
+.section-title p{
+    color:#b8b8b8;
+    margin-top:14px;
+}
+
+/* CARDS */
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:30px;
+}
+
+.card{
+    background:#101826;
+    border-radius:28px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.06);
+    transition:.35s;
+    position:relative;
+}
+
+.card:hover{
+    transform:translateY(-10px);
+}
+
+.card img{
+    width:100%;
+    height:240px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:28px;
+}
+
+.badge{
+    display:inline-block;
+    background:#00e0ff;
+    color:black;
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:.8rem;
+    font-weight:800;
+    margin-bottom:18px;
+}
+
+.card-content h3{
+    font-size:1.7rem;
+    margin-bottom:12px;
+}
+
+.card-content p{
+    color:#bdbdbd;
+    line-height:1.7;
+}
+
+.price{
+    margin-top:22px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+}
+
+.old{
+    text-decoration:line-through;
+    color:#777;
+}
+
+.new{
+    color:#00e0ff;
+    font-size:2rem;
+    font-weight:900;
+}
+
+.card button{
+    margin-top:22px;
+    width:100%;
+    padding:16px;
+    border:none;
+    border-radius:16px;
+    background:linear-gradient(135deg,#00e0ff,#00aaff);
+    color:black;
+    font-weight:800;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.card button:hover{
+    transform:scale(1.03);
+}
+
+/* BENEFITS */
+
+.benefits{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:24px;
+}
+
+.benefit{
+    background:#101826;
+    padding:30px;
+    border-radius:26px;
+    border:1px solid rgba(255,255,255,.06);
+}
+
+.benefit h3{
+    margin-top:18px;
+    margin-bottom:12px;
+}
+
+.benefit p{
+    color:#bdbdbd;
+    line-height:1.6;
+}
+
+.icon{
+    font-size:2.5rem;
+}
+
+/* NEWSLETTER */
 
 .newsletter{
-    margin:80px 6%;
-    background:linear-gradient(135deg,#00e0ff,#00b8d4);
-    padding:50px;
-    border-radius:30px;
-    color:#000;
+    margin:100px 6%;
+    background:linear-gradient(135deg,#00e0ff,#0077ff);
+    padding:70px;
+    border-radius:40px;
     text-align:center;
+    color:black;
 }
 
 .newsletter h2{
-    font-size:2.5rem;
-    margin-bottom:14px;
+    font-size:3rem;
+    font-weight:900;
 }
 
 .newsletter p{
-    margin-bottom:25px;
+    margin-top:15px;
     font-weight:500;
 }
 
-.newsletter input{
-    width:320px;
+.news-form{
+    margin-top:30px;
+    display:flex;
+    justify-content:center;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+.news-form input{
+    width:350px;
     max-width:100%;
     padding:18px;
     border:none;
-    border-radius:14px;
-    margin-right:10px;
+    border-radius:18px;
+    font-size:1rem;
 }
 
-.newsletter button{
-    padding:18px 26px;
+.news-form button{
+    padding:18px 28px;
     border:none;
-    border-radius:14px;
-    background:#000;
-    color:#fff;
-    font-weight:700;
+    border-radius:18px;
+    background:black;
+    color:white;
+    font-weight:800;
     cursor:pointer;
 }
 
+/* FOOTER */
+
 footer{
-    padding:50px 6%;
-    color:#8e8e8e;
+    padding:60px 6%;
     border-top:1px solid rgba(255,255,255,.06);
-    margin-top:60px;
+    color:#8f8f8f;
+    display:flex;
+    justify-content:space-between;
+    flex-wrap:wrap;
+    gap:20px;
 }
 
-@media(max-width:900px){
+footer h3{
+    color:white;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:1000px){
 
     .hero{
         grid-template-columns:1fr;
     }
 
     .hero-text h1{
-        font-size:2.8rem;
+        font-size:4.5rem;
     }
+
+    .floating-card{
+        position:relative;
+        left:0;
+        bottom:0;
+        margin-top:20px;
+        width:100%;
+    }
+
+}
+
+@media(max-width:700px){
 
     nav{
         display:none;
     }
 
-    .newsletter input{
-        margin-bottom:12px;
-        margin-right:0;
+    .hero-text h1{
+        font-size:3.5rem;
     }
+
+    .section-title h2{
+        font-size:2.3rem;
+    }
+
+    .newsletter{
+        padding:40px 25px;
+    }
+
+    .newsletter h2{
+        font-size:2rem;
+    }
+
 }
+
 </style>
 </head>
 <body>
 
+<div class="bg-glow"></div>
+<div class="bg-glow2"></div>
+
 <header>
-    <div class="logo">DescontaJá</div>
+
+    <div class="logo">PROMIFY</div>
 
     <nav>
-        <a href="#">Início</a>
         <a href="#">Cinema</a>
         <a href="#">Viagens</a>
         <a href="#">Shows</a>
+        <a href="#">Hotéis</a>
         <a href="#">Restaurantes</a>
     </nav>
+
+    <button class="header-btn">
+        Entrar
+    </button>
+
 </header>
 
 <section class="hero">
 
     <div class="hero-text">
-        <h1>Os melhores <span>descontos</span> em um só lugar.</h1>
+
+        <small>🔥 Mais de 25 mil descontos ativos</small>
+
+        <h1>
+            Descubra ofertas
+            <span>absurdas</span>
+            todos os dias.
+        </h1>
 
         <p>
-            Economize em cinemas, viagens, shows, restaurantes,
-            eventos e muito mais com cupons exclusivos e ofertas atualizadas diariamente.
+            Economize em cinemas, viagens, festivais,
+            restaurantes, hotéis e eventos com uma plataforma
+            moderna, rápida e cheia de promoções exclusivas.
         </p>
 
-        <div class="search-box">
-            <input type="text" placeholder="Buscar descontos, eventos ou cidades...">
-            <button>Buscar</button>
-        </div>
-    </div>
+        <div class="hero-buttons">
+            <button class="primary-btn">
+                Explorar descontos
+            </button>
 
-    <div class="hero-card">
-
-        <div class="discount-preview">
-            <p>Oferta do Dia</p>
-            <h2>50% OFF</h2>
-            <span>Cinemas em todo Brasil</span>
-        </div>
-
-        <div class="discount-preview">
-            <p>Viagens</p>
-            <h2>35% OFF</h2>
-            <span>Pacotes para praia e resorts</span>
-        </div>
-
-        <div class="discount-preview">
-            <p>Shows</p>
-            <h2>2 Ingressos</h2>
-            <span>Pague apenas 1</span>
+            <button class="secondary-btn">
+                Ver ofertas VIP
+            </button>
         </div>
 
     </div>
 
-</section>
+    <div class="hero-image">
 
-<section class="section">
+        <img src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?q=80&w=1400&auto=format&fit=crop">
 
-    <div class="section-title">
-        <h2>Categorias populares</h2>
-    </div>
+        <div class="floating-card">
+            <h3>80% OFF</h3>
+            <p>
+                Pacotes de viagens, cinemas e eventos exclusivos.
+            </p>
+        </div>
 
-    <div class="categories">
-        <div class="category">🎬 Cinema</div>
-        <div class="category">✈️ Viagens</div>
-        <div class="category">🎵 Shows</div>
-        <div class="category">🍔 Restaurantes</div>
-        <div class="category">🏨 Hotéis</div>
-        <div class="category">🎡 Eventos</div>
     </div>
 
 </section>
@@ -390,80 +550,144 @@ footer{
 
     <div class="section-title">
         <h2>Ofertas em destaque</h2>
+        <p>As promoções mais acessadas da semana.</p>
     </div>
 
     <div class="cards">
 
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1200&auto=format&fit=crop">
+
+            <img src="https://images.unsplash.com/photo-1513106580091-1d82408b8cd6?q=80&w=1400&auto=format&fit=crop">
 
             <div class="card-content">
-                <div class="badge">Cinema</div>
 
-                <h3>Ingresso VIP</h3>
+                <div class="badge">
+                    🍿 Cinema
+                </div>
+
+                <h3>Combo VIP + Ingresso</h3>
 
                 <p>
-                    Aproveite meia entrada e combos promocionais
-                    nos melhores cinemas.
+                    Aproveite descontos especiais em cinemas premium
+                    com combos exclusivos.
                 </p>
 
                 <div class="price">
-                    <div class="old">R$ 60</div>
-                    <div class="new">R$ 29,90</div>
+                    <div class="old">R$ 89</div>
+                    <div class="new">R$ 39</div>
                 </div>
 
-                <button onclick="alert('Cupom aplicado com sucesso!')">
+                <button onclick="alert('Cupom aplicado!')">
                     Pegar desconto
                 </button>
+
             </div>
+
         </div>
 
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop">
+
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1400&auto=format&fit=crop">
 
             <div class="card-content">
-                <div class="badge">Viagem</div>
 
-                <h3>Pacote Nordeste</h3>
+                <div class="badge">
+                    ✈️ Viagem
+                </div>
+
+                <h3>Resort All Inclusive</h3>
 
                 <p>
-                    Resorts, passagens e hospedagem
-                    com até 40% de desconto.
+                    Hospedagens paradisíacas com preços promocionais
+                    limitados.
                 </p>
 
                 <div class="price">
-                    <div class="old">R$ 2.500</div>
+                    <div class="old">R$ 3.200</div>
                     <div class="new">R$ 1.490</div>
                 </div>
 
                 <button onclick="alert('Oferta salva!')">
-                    Ver oferta
+                    Ver promoção
                 </button>
+
             </div>
+
         </div>
 
         <div class="card">
-            <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1200&auto=format&fit=crop">
+
+            <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1400&auto=format&fit=crop">
 
             <div class="card-content">
-                <div class="badge">Show</div>
 
-                <h3>Festival Music Live</h3>
+                <div class="badge">
+                    🎵 Show
+                </div>
+
+                <h3>Festival Summer Beats</h3>
 
                 <p>
-                    Ingressos promocionais para os maiores
-                    festivais e shows do país.
+                    Ingressos promocionais para os maiores festivais
+                    e shows do Brasil.
                 </p>
 
                 <div class="price">
-                    <div class="old">R$ 400</div>
+                    <div class="old">R$ 450</div>
                     <div class="new">R$ 199</div>
                 </div>
 
                 <button onclick="alert('Ingresso reservado!')">
                     Comprar agora
                 </button>
+
             </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+    <div class="section-title">
+        <h2>Por que usar o Promify?</h2>
+        <p>Uma experiência moderna para economizar mais.</p>
+    </div>
+
+    <div class="benefits">
+
+        <div class="benefit">
+            <div class="icon">⚡</div>
+            <h3>Ofertas instantâneas</h3>
+            <p>
+                Cupons atualizados em tempo real todos os dias.
+            </p>
+        </div>
+
+        <div class="benefit">
+            <div class="icon">🎯</div>
+            <h3>Descontos exclusivos</h3>
+            <p>
+                Promoções que você não encontra em outros lugares.
+            </p>
+        </div>
+
+        <div class="benefit">
+            <div class="icon">💎</div>
+            <h3>Experiência premium</h3>
+            <p>
+                Interface moderna e rápida inspirada nas maiores startups.
+            </p>
+        </div>
+
+        <div class="benefit">
+            <div class="icon">🌍</div>
+            <h3>Viagens e eventos</h3>
+            <p>
+                Economize em hotéis, voos, shows e cinemas.
+            </p>
         </div>
 
     </div>
@@ -472,23 +696,39 @@ footer{
 
 <section class="newsletter">
 
-    <h2>Receba promoções exclusivas</h2>
+    <h2>
+        Receba promoções secretas 🔥
+    </h2>
 
     <p>
-        Seja avisado primeiro sobre descontos relâmpago e cupons secretos.
+        Seja o primeiro a receber descontos absurdos antes de todo mundo.
     </p>
 
-    <div>
+    <div class="news-form">
+
         <input type="email" placeholder="Digite seu e-mail">
-        <button onclick="alert('E-mail cadastrado!')">
-            Inscrever-se
+
+        <button onclick="alert('Você entrou na lista VIP!')">
+            Entrar na lista VIP
         </button>
+
     </div>
 
 </section>
 
 <footer>
-    © 2026 DescontaJá — Todos os direitos reservados.
+
+    <div>
+        <h3>PROMIFY</h3>
+        <p>
+            Sua plataforma premium de descontos.
+        </p>
+    </div>
+
+    <div>
+        © 2026 Promify. Todos os direitos reservados.
+    </div>
+
 </footer>
 
 </body>
