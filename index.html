@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>Offclub — Plataforma Premium de Descontos</title>
+<title>OFFCLUB — Descontos Premium</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,102 +24,102 @@ html{
 }
 
 body{
-    background:#050816;
+    background:#060816;
     color:white;
     font-family:'Outfit',sans-serif;
     overflow-x:hidden;
 }
 
-/* ===== CUSTOM CURSOR ===== */
+/* ================= CURSOR ================= */
 
 .cursor{
-    width:22px;
-    height:22px;
+    width:24px;
+    height:24px;
     border:2px solid #00e0ff;
     border-radius:50%;
     position:fixed;
-    pointer-events:none;
     transform:translate(-50%,-50%);
-    z-index:99999;
-    transition:transform .1s ease;
+    pointer-events:none;
+    z-index:999999;
+    transition:transform .12s ease,
+               background .2s ease,
+               width .2s ease,
+               height .2s ease;
 }
 
-.cursor-grow{
-    transform:translate(-50%,-50%) scale(2);
-    background:#00e0ff30;
+.cursor.active{
+    width:60px;
+    height:60px;
+    background:#00e0ff20;
 }
 
-/* ===== BG EFFECTS ===== */
+/* ================= BACKGROUND ================= */
 
-.bg1,.bg2{
+.bg{
     position:fixed;
+    width:700px;
+    height:700px;
     border-radius:50%;
-    filter:blur(120px);
+    filter:blur(140px);
     z-index:-1;
 }
 
 .bg1{
-    width:700px;
-    height:700px;
     background:#00e0ff20;
-    top:-200px;
-    right:-200px;
+    top:-250px;
+    right:-250px;
 }
 
 .bg2{
-    width:700px;
-    height:700px;
-    background:#ff00aa20;
+    background:#ff008c15;
     bottom:-250px;
-    left:-200px;
+    left:-250px;
 }
 
-/* ===== HEADER ===== */
+/* ================= HEADER ================= */
 
 header{
     position:fixed;
-    width:100%;
     top:0;
-    z-index:999;
-    backdrop-filter:blur(20px);
-    background:rgba(5,8,22,.75);
-    border-bottom:1px solid rgba(255,255,255,.06);
-
+    width:100%;
+    z-index:9999;
+    padding:20px 6%;
     display:flex;
     justify-content:space-between;
     align-items:center;
-
-    padding:22px 6%;
+    backdrop-filter:blur(20px);
+    background:rgba(6,8,22,.7);
+    border-bottom:1px solid rgba(255,255,255,.06);
 }
 
 .logo{
     font-family:'Bebas Neue',sans-serif;
-    font-size:2.8rem;
-    letter-spacing:2px;
+    font-size:3rem;
     color:#00e0ff;
+    letter-spacing:3px;
 }
 
 nav{
     display:flex;
-    gap:30px;
+    gap:28px;
 }
 
 nav a{
     text-decoration:none;
-    color:#d4d4d4;
-    font-weight:500;
-    transition:.3s;
+    color:#d7d7d7;
+    font-weight:600;
     position:relative;
+    transition:.3s;
 }
 
 nav a::after{
     content:'';
     position:absolute;
+    left:0;
+    bottom:-6px;
     width:0%;
     height:2px;
     background:#00e0ff;
-    left:0;
-    bottom:-6px;
     transition:.3s;
 }
 
@@ -131,27 +131,26 @@ nav a:hover::after{
     width:100%;
 }
 
-.header-actions{
+.header-buttons{
     display:flex;
     gap:12px;
 }
 
 .header-btn{
-    padding:13px 22px;
+    padding:13px 20px;
     border:none;
     border-radius:14px;
-    font-weight:700;
     cursor:pointer;
+    font-weight:700;
     transition:.3s;
 }
 
-.login-btn{
-    background:transparent;
+.login{
+    background:#12192b;
     color:white;
-    border:1px solid rgba(255,255,255,.1);
 }
 
-.vip-btn{
+.vip{
     background:linear-gradient(135deg,#00e0ff,#0077ff);
     color:black;
 }
@@ -160,23 +159,23 @@ nav a:hover::after{
     transform:translateY(-3px);
 }
 
-/* ===== HERO ===== */
+/* ================= HERO ================= */
 
 .hero{
     min-height:100vh;
     display:grid;
     grid-template-columns:1.1fr 1fr;
     align-items:center;
-    padding:140px 6% 90px;
     gap:60px;
+    padding:140px 6% 80px;
 }
 
 .hero-text small{
-    background:#00e0ff15;
+    background:#00e0ff12;
     border:1px solid #00e0ff30;
-    color:#00e0ff;
     padding:10px 18px;
     border-radius:999px;
+    color:#00e0ff;
     font-weight:700;
 }
 
@@ -187,48 +186,48 @@ nav a:hover::after{
     font-weight:900;
 }
 
-.hero-text span{
+.hero-text h1 span{
     color:#00e0ff;
 }
 
 .hero-text p{
     margin-top:24px;
-    color:#bcbcbc;
+    color:#bdbdbd;
     line-height:1.8;
     max-width:650px;
-    font-size:1.08rem;
+    font-size:1.05rem;
 }
 
 .hero-buttons{
-    margin-top:35px;
+    margin-top:38px;
     display:flex;
-    gap:16px;
+    gap:18px;
     flex-wrap:wrap;
 }
 
-.primary-btn,.secondary-btn{
+.main-btn,
+.second-btn{
     padding:18px 28px;
     border:none;
     border-radius:18px;
     font-weight:800;
     cursor:pointer;
-    transition:.3s;
+    transition:.35s;
 }
 
-.primary-btn{
+.main-btn{
     background:linear-gradient(135deg,#00e0ff,#0077ff);
     color:black;
 }
 
-.secondary-btn{
-    background:transparent;
+.second-btn{
+    background:#11182a;
     color:white;
-    border:1px solid rgba(255,255,255,.1);
 }
 
-.primary-btn:hover,
-.secondary-btn:hover{
-    transform:translateY(-5px) scale(1.03);
+.main-btn:hover,
+.second-btn:hover{
+    transform:translateY(-6px) scale(1.04);
 }
 
 .hero-image{
@@ -238,78 +237,78 @@ nav a:hover::after{
 .hero-image img{
     width:100%;
     border-radius:35px;
-    box-shadow:0 40px 100px rgba(0,0,0,.45);
+    box-shadow:0 40px 120px rgba(0,0,0,.5);
 }
 
-.floating-box{
+.floating{
     position:absolute;
     bottom:-35px;
     left:-35px;
     background:#111827;
     border:1px solid rgba(255,255,255,.08);
-    padding:24px;
-    border-radius:28px;
-    width:270px;
-    backdrop-filter:blur(20px);
-    animation:float 3s infinite ease-in-out;
+    padding:25px;
+    border-radius:26px;
+    width:280px;
+    animation:float 4s ease-in-out infinite;
 }
 
 @keyframes float{
     0%{transform:translateY(0px);}
-    50%{transform:translateY(-10px);}
+    50%{transform:translateY(-12px);}
     100%{transform:translateY(0px);}
 }
 
-.floating-box h2{
+.floating h2{
     color:#00e0ff;
-    font-size:2.4rem;
+    font-size:2.6rem;
 }
 
-.floating-box p{
+.floating p{
     color:#bcbcbc;
-    margin-top:8px;
-}
-
-/* ===== STATS ===== */
-
-.stats{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:24px;
-    padding:0 6% 80px;
-}
-
-.stat{
-    background:#101624;
-    border:1px solid rgba(255,255,255,.05);
-    padding:35px;
-    border-radius:28px;
-    text-align:center;
-    transition:.3s;
-}
-
-.stat:hover{
-    transform:translateY(-8px);
-}
-
-.stat h2{
-    font-size:3rem;
-    color:#00e0ff;
-}
-
-.stat p{
-    color:#bdbdbd;
     margin-top:10px;
 }
 
-/* ===== SECTION ===== */
+/* ================= SEARCH ================= */
+
+.search-bar{
+    margin-top:35px;
+    background:#101624;
+    border:1px solid rgba(255,255,255,.05);
+    border-radius:22px;
+    padding:16px;
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+}
+
+.search-bar input{
+    flex:1;
+    min-width:200px;
+    background:transparent;
+    border:none;
+    color:white;
+    font-size:1rem;
+    outline:none;
+}
+
+.search-bar button{
+    padding:14px 22px;
+    border:none;
+    border-radius:14px;
+    background:#00e0ff;
+    color:black;
+    font-weight:800;
+    cursor:pointer;
+}
+
+/* ================= SECTION ================= */
 
 .section{
     padding:100px 6%;
 }
 
 .section-title{
-    margin-bottom:55px;
+    margin-bottom:50px;
 }
 
 .section-title h2{
@@ -322,33 +321,75 @@ nav a:hover::after{
     color:#bcbcbc;
 }
 
-/* ===== FILTERS ===== */
+/* ================= CATEGORIES ================= */
 
-.filters{
-    display:flex;
-    gap:14px;
-    flex-wrap:wrap;
-    margin-bottom:40px;
+.categories{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:24px;
 }
 
-.filter-btn{
-    padding:14px 20px;
+.category{
+    position:relative;
+    overflow:hidden;
+    border-radius:28px;
+    cursor:pointer;
+    transition:.4s;
+    height:320px;
+}
+
+.category:hover{
+    transform:translateY(-10px);
+}
+
+.category img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    transition:.5s;
+}
+
+.category:hover img{
+    transform:scale(1.08);
+}
+
+.overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(to top,rgba(0,0,0,.8),transparent);
+    display:flex;
+    flex-direction:column;
+    justify-content:flex-end;
+    padding:25px;
+}
+
+.overlay h3{
+    font-size:2rem;
+}
+
+.overlay p{
+    margin-top:8px;
+    color:#dadada;
+}
+
+.explore{
+    margin-top:18px;
+    padding:12px 18px;
     border:none;
     border-radius:14px;
-    background:#101624;
-    color:white;
-    cursor:pointer;
-    transition:.3s;
-    font-weight:700;
-}
-
-.filter-btn.active,
-.filter-btn:hover{
     background:#00e0ff;
     color:black;
+    font-weight:800;
+    cursor:pointer;
+    width:max-content;
+    transition:.3s;
 }
 
-/* ===== CARDS ===== */
+.explore:hover{
+    transform:scale(1.06);
+}
+
+/* ================= OFFERS ================= */
 
 .cards{
     display:grid;
@@ -360,13 +401,13 @@ nav a:hover::after{
     background:#101624;
     border-radius:30px;
     overflow:hidden;
-    border:1px solid rgba(255,255,255,.06);
-    transition:.35s;
+    border:1px solid rgba(255,255,255,.05);
+    transition:.4s;
     position:relative;
 }
 
 .card:hover{
-    transform:translateY(-12px) scale(1.01);
+    transform:translateY(-12px);
 }
 
 .card img{
@@ -379,20 +420,20 @@ nav a:hover::after{
     position:absolute;
     top:18px;
     right:18px;
-    background:rgba(0,0,0,.4);
-    width:45px;
-    height:45px;
+    width:48px;
+    height:48px;
     border-radius:50%;
+    background:rgba(0,0,0,.45);
     display:flex;
     justify-content:center;
     align-items:center;
     cursor:pointer;
-    font-size:1.2rem;
     transition:.3s;
+    font-size:1.1rem;
 }
 
 .favorite.active{
-    background:#ff2c75;
+    background:#ff2f77;
 }
 
 .card-content{
@@ -407,24 +448,24 @@ nav a:hover::after{
     border-radius:999px;
     font-size:.8rem;
     font-weight:800;
-    margin-bottom:18px;
 }
 
 .card-content h3{
+    margin-top:18px;
     font-size:1.8rem;
 }
 
 .card-content p{
-    color:#bcbcbc;
     margin-top:14px;
+    color:#bcbcbc;
     line-height:1.7;
 }
 
 .price{
+    margin-top:24px;
     display:flex;
-    align-items:center;
     gap:14px;
-    margin-top:22px;
+    align-items:center;
 }
 
 .old{
@@ -438,16 +479,16 @@ nav a:hover::after{
     font-weight:900;
 }
 
-.card-actions{
+.card-buttons{
     margin-top:24px;
     display:flex;
     gap:14px;
 }
 
-.buy-btn,
-.share-btn{
+.buy,
+.share{
     flex:1;
-    padding:16px;
+    padding:15px;
     border:none;
     border-radius:16px;
     cursor:pointer;
@@ -455,94 +496,73 @@ nav a:hover::after{
     transition:.3s;
 }
 
-.buy-btn{
+.buy{
     background:linear-gradient(135deg,#00e0ff,#0077ff);
     color:black;
 }
 
-.share-btn{
-    background:#1a2336;
+.share{
+    background:#182238;
     color:white;
 }
 
-.buy-btn:hover,
-.share-btn:hover{
-    transform:scale(1.03);
+.buy:hover,
+.share:hover{
+    transform:scale(1.04);
 }
 
-/* ===== TESTIMONIALS ===== */
+/* ================= COUNTERS ================= */
 
-.testimonials{
+.stats{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
     gap:24px;
 }
 
-.testimonial{
+.stat{
     background:#101624;
-    padding:30px;
-    border-radius:26px;
+    border-radius:28px;
+    padding:40px;
+    text-align:center;
     border:1px solid rgba(255,255,255,.05);
     transition:.3s;
 }
 
-.testimonial:hover{
+.stat:hover{
     transform:translateY(-8px);
 }
 
-.testimonial p{
-    color:#c2c2c2;
-    line-height:1.7;
+.stat h2{
+    color:#00e0ff;
+    font-size:3rem;
 }
 
-.user{
-    display:flex;
-    align-items:center;
-    gap:14px;
-    margin-top:22px;
+.stat p{
+    margin-top:10px;
+    color:#bcbcbc;
 }
 
-.user img{
-    width:55px;
-    height:55px;
-    border-radius:50%;
-    object-fit:cover;
-}
-
-/* ===== NEWSLETTER ===== */
+/* ================= NEWSLETTER ================= */
 
 .newsletter{
     margin:100px 6%;
     background:linear-gradient(135deg,#00e0ff,#0077ff);
     padding:80px;
     border-radius:40px;
-    color:black;
     text-align:center;
+    color:black;
     position:relative;
     overflow:hidden;
-}
-
-.newsletter::before{
-    content:'';
-    position:absolute;
-    width:350px;
-    height:350px;
-    background:#ffffff30;
-    border-radius:50%;
-    top:-150px;
-    right:-120px;
 }
 
 .newsletter h2{
     font-size:3.5rem;
     font-weight:900;
-    position:relative;
 }
 
 .newsletter p{
-    margin-top:16px;
-    font-size:1.1rem;
-    position:relative;
+    margin-top:15px;
+    font-size:1.05rem;
 }
 
 .news-form{
@@ -551,7 +571,6 @@ nav a:hover::after{
     justify-content:center;
     gap:16px;
     flex-wrap:wrap;
-    position:relative;
 }
 
 .news-form input{
@@ -571,33 +590,28 @@ nav a:hover::after{
     color:white;
     font-weight:800;
     cursor:pointer;
-    transition:.3s;
 }
 
-.news-form button:hover{
-    transform:scale(1.04);
-}
-
-/* ===== FOOTER ===== */
+/* ================= FOOTER ================= */
 
 footer{
     padding:70px 6%;
-    border-top:1px solid rgba(255,255,255,.06);
+    border-top:1px solid rgba(255,255,255,.05);
     display:flex;
     justify-content:space-between;
     flex-wrap:wrap;
     gap:30px;
-    color:#9b9b9b;
+    color:#a0a0a0;
 }
 
 .footer-links{
     display:flex;
-    gap:24px;
+    gap:20px;
     flex-wrap:wrap;
 }
 
 .footer-links a{
-    color:#cfcfcf;
+    color:#d7d7d7;
     text-decoration:none;
 }
 
@@ -605,7 +619,7 @@ footer{
     color:#00e0ff;
 }
 
-/* ===== POPUP ===== */
+/* ================= POPUP ================= */
 
 .popup{
     position:fixed;
@@ -615,7 +629,7 @@ footer{
     padding:20px 24px;
     border-radius:18px;
     border:1px solid rgba(255,255,255,.08);
-    z-index:99999;
+    z-index:999999;
     transition:.5s;
 }
 
@@ -623,7 +637,7 @@ footer{
     right:30px;
 }
 
-/* ===== RESPONSIVO ===== */
+/* ================= RESPONSIVO ================= */
 
 @media(max-width:1000px){
 
@@ -648,7 +662,7 @@ footer{
     }
 
     .section-title h2{
-        font-size:2.3rem;
+        font-size:2.2rem;
     }
 
     .newsletter{
@@ -656,7 +670,7 @@ footer{
     }
 
     .newsletter h2{
-        font-size:2.2rem;
+        font-size:2.3rem;
     }
 
 }
@@ -667,8 +681,8 @@ footer{
 
 <div class="cursor"></div>
 
-<div class="bg1"></div>
-<div class="bg2"></div>
+<div class="bg bg1"></div>
+<div class="bg bg2"></div>
 
 <div class="popup" id="popup">
     🎉 Oferta adicionada aos favoritos!
@@ -679,21 +693,23 @@ footer{
     <div class="logo">OFFCLUB</div>
 
     <nav>
-        <a href="#">Cinema</a>
-        <a href="#">Viagens</a>
-        <a href="#">Shows</a>
-        <a href="#">Hotéis</a>
-        <a href="#">Restaurantes</a>
+        <a href="#cinema">Cinema</a>
+        <a href="#shows">Shows</a>
+        <a href="#viagens">Viagens</a>
+        <a href="#hoteis">Hotéis</a>
+        <a href="#restaurantes">Restaurantes</a>
     </nav>
 
-    <div class="header-actions">
-        <button class="header-btn login-btn">
+    <div class="header-buttons">
+
+        <button class="header-btn login">
             Entrar
         </button>
 
-        <button class="header-btn vip-btn">
-            VIP+
+        <button class="header-btn vip">
+            OFFCLUB+
         </button>
+
     </div>
 
 </header>
@@ -702,28 +718,38 @@ footer{
 
     <div class="hero-text">
 
-        <small>🔥 Mais de 40 mil descontos ativos</small>
+        <small>🔥 +50 mil descontos ativos</small>
 
         <h1>
-            O futuro dos
-            <span>descontos</span>
-            chegou.
+            Experiências
+            <span>premium</span>
+            com descontos absurdos.
         </h1>
 
         <p>
-            Economize em viagens, cinemas, restaurantes,
-            festivais, hotéis e experiências premium com uma
-            plataforma moderna e cheia de interações.
+            Descubra ofertas exclusivas em cinemas,
+            shows, hotéis, restaurantes e viagens
+            em uma plataforma moderna, rápida e totalmente interativa.
         </p>
+
+        <div class="search-bar">
+
+            <input type="text" placeholder="Buscar ofertas, lugares ou eventos...">
+
+            <button id="searchBtn">
+                Buscar
+            </button>
+
+        </div>
 
         <div class="hero-buttons">
 
-            <button class="primary-btn">
-                Explorar promoções
+            <button class="main-btn">
+                Explorar ofertas
             </button>
 
-            <button class="secondary-btn">
-                Ver experiências
+            <button class="second-btn">
+                Ver categorias
             </button>
 
         </div>
@@ -734,11 +760,11 @@ footer{
 
         <img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?q=80&w=1600&auto=format&fit=crop">
 
-        <div class="floating-box">
+        <div class="floating">
             <h2>80% OFF</h2>
+
             <p>
-                Descontos exclusivos em shows,
-                viagens e cinemas premium.
+                Cupons exclusivos para experiências premium.
             </p>
         </div>
 
@@ -746,26 +772,125 @@ footer{
 
 </section>
 
-<section class="stats">
+<section class="section">
 
-    <div class="stat">
-        <h2 id="counter1">0</h2>
-        <p>Usuários ativos</p>
+    <div class="section-title">
+        <h2>Categorias</h2>
+        <p>Explore experiências incríveis com interações em tempo real.</p>
     </div>
 
-    <div class="stat">
-        <h2 id="counter2">0</h2>
-        <p>Ofertas disponíveis</p>
-    </div>
+    <div class="categories">
 
-    <div class="stat">
-        <h2 id="counter3">0</h2>
-        <p>Cupons usados hoje</p>
-    </div>
+        <!-- CINEMA -->
 
-    <div class="stat">
-        <h2 id="counter4">0</h2>
-        <p>Parceiros premium</p>
+        <div class="category" id="cinema">
+
+            <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1400&auto=format&fit=crop">
+
+            <div class="overlay">
+
+                <h3>🍿 Cinema</h3>
+
+                <p>
+                    Ingressos VIP e combos promocionais.
+                </p>
+
+                <button class="explore">
+                    Explorar
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- SHOWS -->
+
+        <div class="category" id="shows">
+
+            <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1400&auto=format&fit=crop">
+
+            <div class="overlay">
+
+                <h3>🎵 Shows</h3>
+
+                <p>
+                    Festivais e eventos com descontos exclusivos.
+                </p>
+
+                <button class="explore">
+                    Ver eventos
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- VIAGENS -->
+
+        <div class="category" id="viagens">
+
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1400&auto=format&fit=crop">
+
+            <div class="overlay">
+
+                <h3>✈️ Viagens</h3>
+
+                <p>
+                    Resorts, praias e destinos paradisíacos.
+                </p>
+
+                <button class="explore">
+                    Descobrir
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- HOTÉIS -->
+
+        <div class="category" id="hoteis">
+
+            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1400&auto=format&fit=crop">
+
+            <div class="overlay">
+
+                <h3>🏨 Hotéis</h3>
+
+                <p>
+                    Hospedagens premium com até 70% OFF.
+                </p>
+
+                <button class="explore">
+                    Reservar
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- RESTAURANTES -->
+
+        <div class="category" id="restaurantes">
+
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1400&auto=format&fit=crop">
+
+            <div class="overlay">
+
+                <h3>🍔 Restaurantes</h3>
+
+                <p>
+                    Experiências gastronômicas exclusivas.
+                </p>
+
+                <button class="explore">
+                    Ver menus
+                </button>
+
+            </div>
+
+        </div>
+
     </div>
 
 </section>
@@ -773,37 +898,11 @@ footer{
 <section class="section">
 
     <div class="section-title">
-        <h2>Explore categorias</h2>
-        <p>Filtre promoções e encontre experiências incríveis.</p>
-    </div>
-
-    <div class="filters">
-
-        <button class="filter-btn active">
-            Todos
-        </button>
-
-        <button class="filter-btn">
-            🍿 Cinema
-        </button>
-
-        <button class="filter-btn">
-            ✈️ Viagens
-        </button>
-
-        <button class="filter-btn">
-            🎵 Shows
-        </button>
-
-        <button class="filter-btn">
-            🍔 Restaurantes
-        </button>
-
+        <h2>Ofertas populares</h2>
+        <p>As promoções mais acessadas da semana.</p>
     </div>
 
     <div class="cards">
-
-        <!-- CARD 1 -->
 
         <div class="card">
 
@@ -811,33 +910,39 @@ footer{
                 ❤
             </div>
 
-            <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1400&auto=format&fit=crop">
+            <img src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?q=80&w=1400&auto=format&fit=crop">
 
             <div class="card-content">
 
                 <div class="badge">
-                    🍿 Cinema
+                    🎬 CINEMA
                 </div>
 
-                <h3>Combo VIP Cinemark</h3>
+                <h3>Combo VIP OFFCLUB</h3>
 
                 <p>
-                    Ingressos premium + pipoca gigante
-                    com descontos exclusivos.
+                    Pipoca gigante + refrigerante + ingresso premium.
                 </p>
 
                 <div class="price">
-                    <div class="old">R$ 89</div>
-                    <div class="new">R$ 39</div>
+
+                    <div class="old">
+                        R$ 89
+                    </div>
+
+                    <div class="new">
+                        R$ 39
+                    </div>
+
                 </div>
 
-                <div class="card-actions">
+                <div class="card-buttons">
 
-                    <button class="buy-btn">
+                    <button class="buy">
                         Resgatar
                     </button>
 
-                    <button class="share-btn">
+                    <button class="share">
                         Compartilhar
                     </button>
 
@@ -847,41 +952,45 @@ footer{
 
         </div>
 
-        <!-- CARD 2 -->
-
         <div class="card">
 
             <div class="favorite">
                 ❤
             </div>
 
-            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1400&auto=format&fit=crop">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1400&auto=format&fit=crop">
 
             <div class="card-content">
 
                 <div class="badge">
-                    ✈️ Viagem
+                    ✈️ VIAGEM
                 </div>
 
                 <h3>Resort Paradise</h3>
 
                 <p>
-                    Pacote completo com hospedagem
-                    e café da manhã incluso.
+                    Hospedagem premium com café incluso.
                 </p>
 
                 <div class="price">
-                    <div class="old">R$ 3.500</div>
-                    <div class="new">R$ 1.790</div>
+
+                    <div class="old">
+                        R$ 3.500
+                    </div>
+
+                    <div class="new">
+                        R$ 1.890
+                    </div>
+
                 </div>
 
-                <div class="card-actions">
+                <div class="card-buttons">
 
-                    <button class="buy-btn">
-                        Ver oferta
+                    <button class="buy">
+                        Reservar
                     </button>
 
-                    <button class="share-btn">
+                    <button class="share">
                         Compartilhar
                     </button>
 
@@ -890,8 +999,6 @@ footer{
             </div>
 
         </div>
-
-        <!-- CARD 3 -->
 
         <div class="card">
 
@@ -904,28 +1011,34 @@ footer{
             <div class="card-content">
 
                 <div class="badge">
-                    🎵 Show
+                    🎵 SHOW
                 </div>
 
                 <h3>Festival Summer Beats</h3>
 
                 <p>
-                    Garanta ingressos promocionais
-                    para os maiores festivais.
+                    Ingressos promocionais para festivais exclusivos.
                 </p>
 
                 <div class="price">
-                    <div class="old">R$ 490</div>
-                    <div class="new">R$ 199</div>
+
+                    <div class="old">
+                        R$ 490
+                    </div>
+
+                    <div class="new">
+                        R$ 199
+                    </div>
+
                 </div>
 
-                <div class="card-actions">
+                <div class="card-buttons">
 
-                    <button class="buy-btn">
+                    <button class="buy">
                         Comprar
                     </button>
 
-                    <button class="share-btn">
+                    <button class="share">
                         Compartilhar
                     </button>
 
@@ -942,69 +1055,30 @@ footer{
 <section class="section">
 
     <div class="section-title">
-        <h2>O que estão dizendo</h2>
-        <p>Experiências reais de usuários do Promify.</p>
+        <h2>Números da OFFCLUB</h2>
+        <p>Milhares de pessoas economizando todos os dias.</p>
     </div>
 
-    <div class="testimonials">
+    <div class="stats">
 
-        <div class="testimonial">
-
-            <p>
-                “Economizei quase R$ 1.200 em viagens.
-                O design do site é absurdo de bonito.”
-            </p>
-
-            <div class="user">
-
-                <img src="https://randomuser.me/api/portraits/women/45.jpg">
-
-                <div>
-                    <strong>Amanda Costa</strong>
-                    <p>Usuária VIP</p>
-                </div>
-
-            </div>
-
+        <div class="stat">
+            <h2 id="count1">0</h2>
+            <p>Usuários ativos</p>
         </div>
 
-        <div class="testimonial">
-
-            <p>
-                “Consegui ingressos para shows esgotados
-                pagando muito menos.”
-            </p>
-
-            <div class="user">
-
-                <img src="https://randomuser.me/api/portraits/men/32.jpg">
-
-                <div>
-                    <strong>Lucas Alves</strong>
-                    <p>Cliente Premium</p>
-                </div>
-
-            </div>
-
+        <div class="stat">
+            <h2 id="count2">0</h2>
+            <p>Cupons utilizados</p>
         </div>
 
-        <div class="testimonial">
+        <div class="stat">
+            <h2 id="count3">0</h2>
+            <p>Parceiros premium</p>
+        </div>
 
-            <p>
-                “A interação do site parece algo de startup bilionária.”
-            </p>
-
-            <div class="user">
-
-                <img src="https://randomuser.me/api/portraits/women/68.jpg">
-
-                <div>
-                    <strong>Marina Silva</strong>
-                    <p>Usuária ativa</p>
-                </div>
-
-            </div>
-
+        <div class="stat">
+            <h2 id="count4">0</h2>
+            <p>Ofertas disponíveis</p>
         </div>
 
     </div>
@@ -1014,19 +1088,19 @@ footer{
 <section class="newsletter">
 
     <h2>
-        Promoções secretas 🔥
+        Entre para o OFFCLUB+
     </h2>
 
     <p>
-        Receba cupons exclusivos antes de todo mundo.
+        Receba promoções secretas e descontos exclusivos antes de todo mundo.
     </p>
 
     <div class="news-form">
 
         <input type="email" placeholder="Digite seu e-mail">
 
-        <button id="vipButton">
-            Entrar para VIP+
+        <button id="vipJoin">
+            Entrar agora
         </button>
 
     </div>
@@ -1036,45 +1110,65 @@ footer{
 <footer>
 
     <div>
-        <h2 style="color:white;">PROMIFY</h2>
+
+        <h2 style="color:white;">
+            OFFCLUB
+        </h2>
+
         <p>
             Sua plataforma premium de descontos e experiências.
         </p>
+
     </div>
 
     <div class="footer-links">
-        <a href="#">Termos</a>
-        <a href="#">Privacidade</a>
-        <a href="#">Suporte</a>
-        <a href="#">Contato</a>
+
+        <a href="#">
+            Privacidade
+        </a>
+
+        <a href="#">
+            Termos
+        </a>
+
+        <a href="#">
+            Suporte
+        </a>
+
+        <a href="#">
+            Contato
+        </a>
+
     </div>
 
 </footer>
 
 <script>
 
-/* ===== CURSOR ===== */
+/* ================= CURSOR ================= */
 
 const cursor = document.querySelector('.cursor');
 
 document.addEventListener('mousemove', e => {
+
     cursor.style.left = e.clientX + 'px';
     cursor.style.top = e.clientY + 'px';
+
 });
 
-document.querySelectorAll('button,a,.card').forEach(el => {
+document.querySelectorAll('button,a,.card,.category').forEach(el => {
 
     el.addEventListener('mouseenter', () => {
-        cursor.classList.add('cursor-grow');
+        cursor.classList.add('active');
     });
 
     el.addEventListener('mouseleave', () => {
-        cursor.classList.remove('cursor-grow');
+        cursor.classList.remove('active');
     });
 
 });
 
-/* ===== FAVORITES ===== */
+/* ================= FAVORITOS ================= */
 
 const favorites = document.querySelectorAll('.favorite');
 const popup = document.getElementById('popup');
@@ -1095,65 +1189,20 @@ favorites.forEach(fav => {
 
 });
 
-/* ===== FILTER BUTTONS ===== */
+/* ================= BOTÕES ================= */
 
-const filters = document.querySelectorAll('.filter-btn');
-
-filters.forEach(btn => {
-
-    btn.addEventListener('click', () => {
-
-        filters.forEach(b => b.classList.remove('active'));
-
-        btn.classList.add('active');
-
-    });
-
-});
-
-/* ===== COUNTERS ===== */
-
-function animateCounter(id,target){
-
-    let count = 0;
-
-    const element = document.getElementById(id);
-
-    const interval = setInterval(() => {
-
-        count += Math.ceil(target/100);
-
-        if(count >= target){
-            count = target;
-            clearInterval(interval);
-        }
-
-        element.innerText = count.toLocaleString();
-
-    },20);
-
-}
-
-animateCounter('counter1',120000);
-animateCounter('counter2',48000);
-animateCounter('counter3',9500);
-animateCounter('counter4',1200);
-
-/* ===== BUTTON INTERACTIONS ===== */
-
-document.querySelectorAll('.buy-btn').forEach(btn => {
+document.querySelectorAll('.buy').forEach(btn => {
 
     btn.addEventListener('click', () => {
 
         btn.innerText = '✓ Adicionado';
-
         btn.style.background = '#00ff99';
 
     });
 
 });
 
-document.querySelectorAll('.share-btn').forEach(btn => {
+document.querySelectorAll('.share').forEach(btn => {
 
     btn.addEventListener('click', () => {
 
@@ -1165,41 +1214,80 @@ document.querySelectorAll('.share-btn').forEach(btn => {
 
 });
 
-/* ===== VIP BUTTON ===== */
+/* ================= BUSCA ================= */
 
-document.getElementById('vipButton')
+document.getElementById('searchBtn')
 .addEventListener('click', () => {
 
-    alert('🎉 Bem-vindo ao VIP+ do Promify!');
+    alert('🔍 Procurando as melhores ofertas para você...');
 
 });
 
-/* ===== SCROLL ANIMATION ===== */
+/* ================= NEWSLETTER ================= */
 
-const cards = document.querySelectorAll('.card,.testimonial,.stat');
+document.getElementById('vipJoin')
+.addEventListener('click', () => {
+
+    alert('🎉 Bem-vindo ao OFFCLUB+');
+
+});
+
+/* ================= CONTADORES ================= */
+
+function counter(id,target){
+
+    let count = 0;
+
+    const el = document.getElementById(id);
+
+    const interval = setInterval(() => {
+
+        count += Math.ceil(target/100);
+
+        if(count >= target){
+
+            count = target;
+            clearInterval(interval);
+
+        }
+
+        el.innerText = count.toLocaleString();
+
+    },20);
+
+}
+
+counter('count1',120000);
+counter('count2',980000);
+counter('count3',3200);
+counter('count4',58000);
+
+/* ================= ANIMAÇÃO SCROLL ================= */
+
+const elements = document.querySelectorAll('.card,.category,.stat');
+
+elements.forEach(el => {
+
+    el.style.opacity = 0;
+    el.style.transform = 'translateY(40px)';
+    el.style.transition = '.7s';
+
+});
 
 window.addEventListener('scroll', () => {
 
-    cards.forEach(card => {
+    elements.forEach(el => {
 
-        const top = card.getBoundingClientRect().top;
+        const top = el.getBoundingClientRect().top;
 
         if(top < window.innerHeight - 80){
 
-            card.style.opacity = 1;
-            card.style.transform = 'translateY(0px)';
+            el.style.opacity = 1;
+            el.style.transform = 'translateY(0px)';
 
         }
 
     });
-
-});
-
-cards.forEach(card => {
-
-    card.style.opacity = 0;
-    card.style.transform = 'translateY(40px)';
-    card.style.transition = '.7s';
 
 });
 
