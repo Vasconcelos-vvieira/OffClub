@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>Offclub — Descontos em Cinema, Viagens e Shows</title>
+<title>Promify — Plataforma Premium de Descontos</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -19,49 +19,62 @@
     box-sizing:border-box;
 }
 
+html{
+    scroll-behavior:smooth;
+}
+
 body{
-    background:#070b14;
+    background:#050816;
     color:white;
     font-family:'Outfit',sans-serif;
     overflow-x:hidden;
 }
 
-/* SCROLLBAR */
+/* ===== CUSTOM CURSOR ===== */
 
-::-webkit-scrollbar{
-    width:10px;
-}
-
-::-webkit-scrollbar-thumb{
-    background:#00e0ff;
-    border-radius:20px;
-}
-
-/* BACKGROUND EFFECT */
-
-.bg-glow{
+.cursor{
+    width:22px;
+    height:22px;
+    border:2px solid #00e0ff;
+    border-radius:50%;
     position:fixed;
+    pointer-events:none;
+    transform:translate(-50%,-50%);
+    z-index:99999;
+    transition:transform .1s ease;
+}
+
+.cursor-grow{
+    transform:translate(-50%,-50%) scale(2);
+    background:#00e0ff30;
+}
+
+/* ===== BG EFFECTS ===== */
+
+.bg1,.bg2{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(120px);
+    z-index:-1;
+}
+
+.bg1{
     width:700px;
     height:700px;
-    background:#00e0ff25;
-    filter:blur(120px);
-    top:-250px;
+    background:#00e0ff20;
+    top:-200px;
     right:-200px;
-    z-index:-1;
 }
 
-.bg-glow2{
-    position:fixed;
-    width:600px;
-    height:600px;
+.bg2{
+    width:700px;
+    height:700px;
     background:#ff00aa20;
-    filter:blur(120px);
     bottom:-250px;
     left:-200px;
-    z-index:-1;
 }
 
-/* HEADER */
+/* ===== HEADER ===== */
 
 header{
     position:fixed;
@@ -69,8 +82,8 @@ header{
     top:0;
     z-index:999;
     backdrop-filter:blur(20px);
-    background:rgba(7,11,20,.75);
-    border-bottom:1px solid rgba(255,255,255,.05);
+    background:rgba(5,8,22,.75);
+    border-bottom:1px solid rgba(255,255,255,.06);
 
     display:flex;
     justify-content:space-between;
@@ -81,60 +94,90 @@ header{
 
 .logo{
     font-family:'Bebas Neue',sans-serif;
-    font-size:2.7rem;
+    font-size:2.8rem;
     letter-spacing:2px;
     color:#00e0ff;
 }
 
 nav{
     display:flex;
-    gap:35px;
+    gap:30px;
 }
 
 nav a{
     text-decoration:none;
-    color:#d5d5d5;
-    transition:.3s;
+    color:#d4d4d4;
     font-weight:500;
+    transition:.3s;
+    position:relative;
+}
+
+nav a::after{
+    content:'';
+    position:absolute;
+    width:0%;
+    height:2px;
+    background:#00e0ff;
+    left:0;
+    bottom:-6px;
+    transition:.3s;
 }
 
 nav a:hover{
     color:#00e0ff;
 }
 
+nav a:hover::after{
+    width:100%;
+}
+
+.header-actions{
+    display:flex;
+    gap:12px;
+}
+
 .header-btn{
-    background:linear-gradient(135deg,#00e0ff,#00aaff);
+    padding:13px 22px;
     border:none;
-    padding:14px 22px;
     border-radius:14px;
-    color:#000;
-    font-weight:800;
+    font-weight:700;
     cursor:pointer;
     transition:.3s;
 }
 
-.header-btn:hover{
-    transform:scale(1.05);
+.login-btn{
+    background:transparent;
+    color:white;
+    border:1px solid rgba(255,255,255,.1);
 }
 
-/* HERO */
+.vip-btn{
+    background:linear-gradient(135deg,#00e0ff,#0077ff);
+    color:black;
+}
+
+.header-btn:hover{
+    transform:translateY(-3px);
+}
+
+/* ===== HERO ===== */
 
 .hero{
     min-height:100vh;
     display:grid;
     grid-template-columns:1.1fr 1fr;
     align-items:center;
-    padding:140px 6% 80px;
+    padding:140px 6% 90px;
     gap:60px;
 }
 
 .hero-text small{
     background:#00e0ff15;
+    border:1px solid #00e0ff30;
     color:#00e0ff;
     padding:10px 18px;
     border-radius:999px;
-    border:1px solid #00e0ff35;
-    font-weight:600;
+    font-weight:700;
 }
 
 .hero-text h1{
@@ -144,16 +187,16 @@ nav a:hover{
     font-weight:900;
 }
 
-.hero-text h1 span{
+.hero-text span{
     color:#00e0ff;
 }
 
 .hero-text p{
-    margin-top:28px;
-    color:#bdbdbd;
+    margin-top:24px;
+    color:#bcbcbc;
     line-height:1.8;
     max-width:650px;
-    font-size:1.05rem;
+    font-size:1.08rem;
 }
 
 .hero-buttons{
@@ -163,36 +206,29 @@ nav a:hover{
     flex-wrap:wrap;
 }
 
-.primary-btn{
-    background:linear-gradient(135deg,#00e0ff,#00aaff);
-    color:#000;
+.primary-btn,.secondary-btn{
+    padding:18px 28px;
     border:none;
-    padding:18px 30px;
     border-radius:18px;
     font-weight:800;
     cursor:pointer;
-    font-size:1rem;
     transition:.3s;
 }
 
-.primary-btn:hover{
-    transform:translateY(-4px);
+.primary-btn{
+    background:linear-gradient(135deg,#00e0ff,#0077ff);
+    color:black;
 }
 
 .secondary-btn{
     background:transparent;
     color:white;
-    border:1px solid rgba(255,255,255,.15);
-    padding:18px 30px;
-    border-radius:18px;
-    font-weight:700;
-    cursor:pointer;
-    transition:.3s;
+    border:1px solid rgba(255,255,255,.1);
 }
 
+.primary-btn:hover,
 .secondary-btn:hover{
-    background:white;
-    color:black;
+    transform:translateY(-5px) scale(1.03);
 }
 
 .hero-image{
@@ -202,42 +238,78 @@ nav a:hover{
 .hero-image img{
     width:100%;
     border-radius:35px;
-    box-shadow:0 40px 80px rgba(0,0,0,.45);
+    box-shadow:0 40px 100px rgba(0,0,0,.45);
 }
 
-/* FLOATING CARD */
-
-.floating-card{
+.floating-box{
     position:absolute;
-    bottom:-40px;
-    left:-40px;
-    background:#101826;
+    bottom:-35px;
+    left:-35px;
+    background:#111827;
     border:1px solid rgba(255,255,255,.08);
     padding:24px;
-    border-radius:24px;
-    width:260px;
+    border-radius:28px;
+    width:270px;
     backdrop-filter:blur(20px);
-    box-shadow:0 20px 50px rgba(0,0,0,.4);
+    animation:float 3s infinite ease-in-out;
 }
 
-.floating-card h3{
+@keyframes float{
+    0%{transform:translateY(0px);}
+    50%{transform:translateY(-10px);}
+    100%{transform:translateY(0px);}
+}
+
+.floating-box h2{
     color:#00e0ff;
-    font-size:2.2rem;
+    font-size:2.4rem;
 }
 
-.floating-card p{
-    color:#b8b8b8;
+.floating-box p{
+    color:#bcbcbc;
     margin-top:8px;
 }
 
-/* SECTION */
+/* ===== STATS ===== */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:24px;
+    padding:0 6% 80px;
+}
+
+.stat{
+    background:#101624;
+    border:1px solid rgba(255,255,255,.05);
+    padding:35px;
+    border-radius:28px;
+    text-align:center;
+    transition:.3s;
+}
+
+.stat:hover{
+    transform:translateY(-8px);
+}
+
+.stat h2{
+    font-size:3rem;
+    color:#00e0ff;
+}
+
+.stat p{
+    color:#bdbdbd;
+    margin-top:10px;
+}
+
+/* ===== SECTION ===== */
 
 .section{
     padding:100px 6%;
 }
 
 .section-title{
-    margin-bottom:50px;
+    margin-bottom:55px;
 }
 
 .section-title h2{
@@ -246,21 +318,47 @@ nav a:hover{
 }
 
 .section-title p{
-    color:#b8b8b8;
-    margin-top:14px;
+    margin-top:12px;
+    color:#bcbcbc;
 }
 
-/* CARDS */
+/* ===== FILTERS ===== */
+
+.filters{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+    margin-bottom:40px;
+}
+
+.filter-btn{
+    padding:14px 20px;
+    border:none;
+    border-radius:14px;
+    background:#101624;
+    color:white;
+    cursor:pointer;
+    transition:.3s;
+    font-weight:700;
+}
+
+.filter-btn.active,
+.filter-btn:hover{
+    background:#00e0ff;
+    color:black;
+}
+
+/* ===== CARDS ===== */
 
 .cards{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
     gap:30px;
 }
 
 .card{
-    background:#101826;
-    border-radius:28px;
+    background:#101624;
+    border-radius:30px;
     overflow:hidden;
     border:1px solid rgba(255,255,255,.06);
     transition:.35s;
@@ -268,13 +366,33 @@ nav a:hover{
 }
 
 .card:hover{
-    transform:translateY(-10px);
+    transform:translateY(-12px) scale(1.01);
 }
 
 .card img{
     width:100%;
     height:240px;
     object-fit:cover;
+}
+
+.favorite{
+    position:absolute;
+    top:18px;
+    right:18px;
+    background:rgba(0,0,0,.4);
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    cursor:pointer;
+    font-size:1.2rem;
+    transition:.3s;
+}
+
+.favorite.active{
+    background:#ff2c75;
 }
 
 .card-content{
@@ -293,20 +411,20 @@ nav a:hover{
 }
 
 .card-content h3{
-    font-size:1.7rem;
-    margin-bottom:12px;
+    font-size:1.8rem;
 }
 
 .card-content p{
-    color:#bdbdbd;
+    color:#bcbcbc;
+    margin-top:14px;
     line-height:1.7;
 }
 
 .price{
-    margin-top:22px;
     display:flex;
     align-items:center;
     gap:14px;
+    margin-top:22px;
 }
 
 .old{
@@ -320,117 +438,192 @@ nav a:hover{
     font-weight:900;
 }
 
-.card button{
-    margin-top:22px;
-    width:100%;
+.card-actions{
+    margin-top:24px;
+    display:flex;
+    gap:14px;
+}
+
+.buy-btn,
+.share-btn{
+    flex:1;
     padding:16px;
     border:none;
     border-radius:16px;
-    background:linear-gradient(135deg,#00e0ff,#00aaff);
-    color:black;
-    font-weight:800;
     cursor:pointer;
+    font-weight:800;
     transition:.3s;
 }
 
-.card button:hover{
+.buy-btn{
+    background:linear-gradient(135deg,#00e0ff,#0077ff);
+    color:black;
+}
+
+.share-btn{
+    background:#1a2336;
+    color:white;
+}
+
+.buy-btn:hover,
+.share-btn:hover{
     transform:scale(1.03);
 }
 
-/* BENEFITS */
+/* ===== TESTIMONIALS ===== */
 
-.benefits{
+.testimonials{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
     gap:24px;
 }
 
-.benefit{
-    background:#101826;
+.testimonial{
+    background:#101624;
     padding:30px;
     border-radius:26px;
-    border:1px solid rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.05);
+    transition:.3s;
 }
 
-.benefit h3{
-    margin-top:18px;
-    margin-bottom:12px;
+.testimonial:hover{
+    transform:translateY(-8px);
 }
 
-.benefit p{
-    color:#bdbdbd;
-    line-height:1.6;
+.testimonial p{
+    color:#c2c2c2;
+    line-height:1.7;
 }
 
-.icon{
-    font-size:2.5rem;
+.user{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-top:22px;
 }
 
-/* NEWSLETTER */
+.user img{
+    width:55px;
+    height:55px;
+    border-radius:50%;
+    object-fit:cover;
+}
+
+/* ===== NEWSLETTER ===== */
 
 .newsletter{
     margin:100px 6%;
     background:linear-gradient(135deg,#00e0ff,#0077ff);
-    padding:70px;
+    padding:80px;
     border-radius:40px;
-    text-align:center;
     color:black;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+}
+
+.newsletter::before{
+    content:'';
+    position:absolute;
+    width:350px;
+    height:350px;
+    background:#ffffff30;
+    border-radius:50%;
+    top:-150px;
+    right:-120px;
 }
 
 .newsletter h2{
-    font-size:3rem;
+    font-size:3.5rem;
     font-weight:900;
+    position:relative;
 }
 
 .newsletter p{
-    margin-top:15px;
-    font-weight:500;
+    margin-top:16px;
+    font-size:1.1rem;
+    position:relative;
 }
 
 .news-form{
-    margin-top:30px;
+    margin-top:35px;
     display:flex;
     justify-content:center;
-    gap:14px;
+    gap:16px;
     flex-wrap:wrap;
+    position:relative;
 }
 
 .news-form input{
-    width:350px;
+    width:380px;
     max-width:100%;
-    padding:18px;
+    padding:20px;
     border:none;
     border-radius:18px;
     font-size:1rem;
 }
 
 .news-form button{
-    padding:18px 28px;
+    padding:20px 28px;
     border:none;
     border-radius:18px;
     background:black;
     color:white;
     font-weight:800;
     cursor:pointer;
+    transition:.3s;
 }
 
-/* FOOTER */
+.news-form button:hover{
+    transform:scale(1.04);
+}
+
+/* ===== FOOTER ===== */
 
 footer{
-    padding:60px 6%;
+    padding:70px 6%;
     border-top:1px solid rgba(255,255,255,.06);
-    color:#8f8f8f;
     display:flex;
     justify-content:space-between;
     flex-wrap:wrap;
-    gap:20px;
+    gap:30px;
+    color:#9b9b9b;
 }
 
-footer h3{
-    color:white;
+.footer-links{
+    display:flex;
+    gap:24px;
+    flex-wrap:wrap;
 }
 
-/* RESPONSIVO */
+.footer-links a{
+    color:#cfcfcf;
+    text-decoration:none;
+}
+
+.footer-links a:hover{
+    color:#00e0ff;
+}
+
+/* ===== POPUP ===== */
+
+.popup{
+    position:fixed;
+    top:30px;
+    right:-500px;
+    background:#101624;
+    padding:20px 24px;
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,.08);
+    z-index:99999;
+    transition:.5s;
+}
+
+.popup.show{
+    right:30px;
+}
+
+/* ===== RESPONSIVO ===== */
 
 @media(max-width:1000px){
 
@@ -439,15 +632,7 @@ footer h3{
     }
 
     .hero-text h1{
-        font-size:4.5rem;
-    }
-
-    .floating-card{
-        position:relative;
-        left:0;
-        bottom:0;
-        margin-top:20px;
-        width:100%;
+        font-size:4.6rem;
     }
 
 }
@@ -459,7 +644,7 @@ footer h3{
     }
 
     .hero-text h1{
-        font-size:3.5rem;
+        font-size:3.3rem;
     }
 
     .section-title h2{
@@ -467,11 +652,11 @@ footer h3{
     }
 
     .newsletter{
-        padding:40px 25px;
+        padding:45px 25px;
     }
 
     .newsletter h2{
-        font-size:2rem;
+        font-size:2.2rem;
     }
 
 }
@@ -480,12 +665,18 @@ footer h3{
 </head>
 <body>
 
-<div class="bg-glow"></div>
-<div class="bg-glow2"></div>
+<div class="cursor"></div>
+
+<div class="bg1"></div>
+<div class="bg2"></div>
+
+<div class="popup" id="popup">
+    🎉 Oferta adicionada aos favoritos!
+</div>
 
 <header>
 
-    <div class="logo">OFFCLUB</div>
+    <div class="logo">PROMIFY</div>
 
     <nav>
         <a href="#">Cinema</a>
@@ -495,9 +686,15 @@ footer h3{
         <a href="#">Restaurantes</a>
     </nav>
 
-    <button class="header-btn">
-        Entrar
-    </button>
+    <div class="header-actions">
+        <button class="header-btn login-btn">
+            Entrar
+        </button>
+
+        <button class="header-btn vip-btn">
+            VIP+
+        </button>
+    </div>
 
 </header>
 
@@ -505,40 +702,43 @@ footer h3{
 
     <div class="hero-text">
 
-        <small>🔥 Mais de 25 mil descontos ativos</small>
+        <small>🔥 Mais de 40 mil descontos ativos</small>
 
         <h1>
-            Descubra ofertas
-            <span>absurdas</span>
-            todos os dias.
+            O futuro dos
+            <span>descontos</span>
+            chegou.
         </h1>
 
         <p>
-            Economize em cinemas, viagens, festivais,
-            restaurantes, hotéis e eventos com uma plataforma
-            moderna, rápida e cheia de promoções exclusivas.
+            Economize em viagens, cinemas, restaurantes,
+            festivais, hotéis e experiências premium com uma
+            plataforma moderna e cheia de interações.
         </p>
 
         <div class="hero-buttons">
+
             <button class="primary-btn">
-                Explorar descontos
+                Explorar promoções
             </button>
 
             <button class="secondary-btn">
-                Ver ofertas VIP
+                Ver experiências
             </button>
+
         </div>
 
     </div>
 
     <div class="hero-image">
 
-        <img src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?q=80&w=1400&auto=format&fit=crop">
+        <img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?q=80&w=1600&auto=format&fit=crop">
 
-        <div class="floating-card">
-            <h3>80% OFF</h3>
+        <div class="floating-box">
+            <h2>80% OFF</h2>
             <p>
-                Pacotes de viagens, cinemas e eventos exclusivos.
+                Descontos exclusivos em shows,
+                viagens e cinemas premium.
             </p>
         </div>
 
@@ -546,18 +746,72 @@ footer h3{
 
 </section>
 
+<section class="stats">
+
+    <div class="stat">
+        <h2 id="counter1">0</h2>
+        <p>Usuários ativos</p>
+    </div>
+
+    <div class="stat">
+        <h2 id="counter2">0</h2>
+        <p>Ofertas disponíveis</p>
+    </div>
+
+    <div class="stat">
+        <h2 id="counter3">0</h2>
+        <p>Cupons usados hoje</p>
+    </div>
+
+    <div class="stat">
+        <h2 id="counter4">0</h2>
+        <p>Parceiros premium</p>
+    </div>
+
+</section>
+
 <section class="section">
 
     <div class="section-title">
-        <h2>Ofertas em destaque</h2>
-        <p>As promoções mais acessadas da semana.</p>
+        <h2>Explore categorias</h2>
+        <p>Filtre promoções e encontre experiências incríveis.</p>
+    </div>
+
+    <div class="filters">
+
+        <button class="filter-btn active">
+            Todos
+        </button>
+
+        <button class="filter-btn">
+            🍿 Cinema
+        </button>
+
+        <button class="filter-btn">
+            ✈️ Viagens
+        </button>
+
+        <button class="filter-btn">
+            🎵 Shows
+        </button>
+
+        <button class="filter-btn">
+            🍔 Restaurantes
+        </button>
+
     </div>
 
     <div class="cards">
 
+        <!-- CARD 1 -->
+
         <div class="card">
 
-            <img src="https://images.unsplash.com/photo-1513106580091-1d82408b8cd6?q=80&w=1400&auto=format&fit=crop">
+            <div class="favorite">
+                ❤
+            </div>
+
+            <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1400&auto=format&fit=crop">
 
             <div class="card-content">
 
@@ -565,11 +819,11 @@ footer h3{
                     🍿 Cinema
                 </div>
 
-                <h3>Combo VIP + Ingresso</h3>
+                <h3>Combo VIP Cinemark</h3>
 
                 <p>
-                    Aproveite descontos especiais em cinemas premium
-                    com combos exclusivos.
+                    Ingressos premium + pipoca gigante
+                    com descontos exclusivos.
                 </p>
 
                 <div class="price">
@@ -577,17 +831,31 @@ footer h3{
                     <div class="new">R$ 39</div>
                 </div>
 
-                <button onclick="alert('Cupom aplicado!')">
-                    Pegar desconto
-                </button>
+                <div class="card-actions">
+
+                    <button class="buy-btn">
+                        Resgatar
+                    </button>
+
+                    <button class="share-btn">
+                        Compartilhar
+                    </button>
+
+                </div>
 
             </div>
 
         </div>
 
+        <!-- CARD 2 -->
+
         <div class="card">
 
-            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1400&auto=format&fit=crop">
+            <div class="favorite">
+                ❤
+            </div>
+
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1400&auto=format&fit=crop">
 
             <div class="card-content">
 
@@ -595,27 +863,41 @@ footer h3{
                     ✈️ Viagem
                 </div>
 
-                <h3>Resort All Inclusive</h3>
+                <h3>Resort Paradise</h3>
 
                 <p>
-                    Hospedagens paradisíacas com preços promocionais
-                    limitados.
+                    Pacote completo com hospedagem
+                    e café da manhã incluso.
                 </p>
 
                 <div class="price">
-                    <div class="old">R$ 3.200</div>
-                    <div class="new">R$ 1.490</div>
+                    <div class="old">R$ 3.500</div>
+                    <div class="new">R$ 1.790</div>
                 </div>
 
-                <button onclick="alert('Oferta salva!')">
-                    Ver promoção
-                </button>
+                <div class="card-actions">
+
+                    <button class="buy-btn">
+                        Ver oferta
+                    </button>
+
+                    <button class="share-btn">
+                        Compartilhar
+                    </button>
+
+                </div>
 
             </div>
 
         </div>
 
+        <!-- CARD 3 -->
+
         <div class="card">
+
+            <div class="favorite">
+                ❤
+            </div>
 
             <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1400&auto=format&fit=crop">
 
@@ -628,18 +910,26 @@ footer h3{
                 <h3>Festival Summer Beats</h3>
 
                 <p>
-                    Ingressos promocionais para os maiores festivais
-                    e shows do Brasil.
+                    Garanta ingressos promocionais
+                    para os maiores festivais.
                 </p>
 
                 <div class="price">
-                    <div class="old">R$ 450</div>
+                    <div class="old">R$ 490</div>
                     <div class="new">R$ 199</div>
                 </div>
 
-                <button onclick="alert('Ingresso reservado!')">
-                    Comprar agora
-                </button>
+                <div class="card-actions">
+
+                    <button class="buy-btn">
+                        Comprar
+                    </button>
+
+                    <button class="share-btn">
+                        Compartilhar
+                    </button>
+
+                </div>
 
             </div>
 
@@ -652,42 +942,69 @@ footer h3{
 <section class="section">
 
     <div class="section-title">
-        <h2>Por que usar o Promify?</h2>
-        <p>Uma experiência moderna para economizar mais.</p>
+        <h2>O que estão dizendo</h2>
+        <p>Experiências reais de usuários do Promify.</p>
     </div>
 
-    <div class="benefits">
+    <div class="testimonials">
 
-        <div class="benefit">
-            <div class="icon">⚡</div>
-            <h3>Ofertas instantâneas</h3>
+        <div class="testimonial">
+
             <p>
-                Cupons atualizados em tempo real todos os dias.
+                “Economizei quase R$ 1.200 em viagens.
+                O design do site é absurdo de bonito.”
             </p>
+
+            <div class="user">
+
+                <img src="https://randomuser.me/api/portraits/women/45.jpg">
+
+                <div>
+                    <strong>Amanda Costa</strong>
+                    <p>Usuária VIP</p>
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="benefit">
-            <div class="icon">🎯</div>
-            <h3>Descontos exclusivos</h3>
+        <div class="testimonial">
+
             <p>
-                Promoções que você não encontra em outros lugares.
+                “Consegui ingressos para shows esgotados
+                pagando muito menos.”
             </p>
+
+            <div class="user">
+
+                <img src="https://randomuser.me/api/portraits/men/32.jpg">
+
+                <div>
+                    <strong>Lucas Alves</strong>
+                    <p>Cliente Premium</p>
+                </div>
+
+            </div>
+
         </div>
 
-        <div class="benefit">
-            <div class="icon">💎</div>
-            <h3>Experiência premium</h3>
-            <p>
-                Interface moderna e rápida inspirada nas maiores startups.
-            </p>
-        </div>
+        <div class="testimonial">
 
-        <div class="benefit">
-            <div class="icon">🌍</div>
-            <h3>Viagens e eventos</h3>
             <p>
-                Economize em hotéis, voos, shows e cinemas.
+                “A interação do site parece algo de startup bilionária.”
             </p>
+
+            <div class="user">
+
+                <img src="https://randomuser.me/api/portraits/women/68.jpg">
+
+                <div>
+                    <strong>Marina Silva</strong>
+                    <p>Usuária ativa</p>
+                </div>
+
+            </div>
+
         </div>
 
     </div>
@@ -697,19 +1014,19 @@ footer h3{
 <section class="newsletter">
 
     <h2>
-        Receba promoções secretas 🔥
+        Promoções secretas 🔥
     </h2>
 
     <p>
-        Seja o primeiro a receber descontos absurdos antes de todo mundo.
+        Receba cupons exclusivos antes de todo mundo.
     </p>
 
     <div class="news-form">
 
         <input type="email" placeholder="Digite seu e-mail">
 
-        <button onclick="alert('Você entrou na lista VIP!')">
-            Entrar na lista VIP
+        <button id="vipButton">
+            Entrar para VIP+
         </button>
 
     </div>
@@ -719,17 +1036,174 @@ footer h3{
 <footer>
 
     <div>
-        <h3>PROMIFY</h3>
+        <h2 style="color:white;">PROMIFY</h2>
         <p>
-            Sua plataforma premium de descontos.
+            Sua plataforma premium de descontos e experiências.
         </p>
     </div>
 
-    <div>
-        © 2026 Promify. Todos os direitos reservados.
+    <div class="footer-links">
+        <a href="#">Termos</a>
+        <a href="#">Privacidade</a>
+        <a href="#">Suporte</a>
+        <a href="#">Contato</a>
     </div>
 
 </footer>
+
+<script>
+
+/* ===== CURSOR ===== */
+
+const cursor = document.querySelector('.cursor');
+
+document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+});
+
+document.querySelectorAll('button,a,.card').forEach(el => {
+
+    el.addEventListener('mouseenter', () => {
+        cursor.classList.add('cursor-grow');
+    });
+
+    el.addEventListener('mouseleave', () => {
+        cursor.classList.remove('cursor-grow');
+    });
+
+});
+
+/* ===== FAVORITES ===== */
+
+const favorites = document.querySelectorAll('.favorite');
+const popup = document.getElementById('popup');
+
+favorites.forEach(fav => {
+
+    fav.addEventListener('click', () => {
+
+        fav.classList.toggle('active');
+
+        popup.classList.add('show');
+
+        setTimeout(() => {
+            popup.classList.remove('show');
+        },2000);
+
+    });
+
+});
+
+/* ===== FILTER BUTTONS ===== */
+
+const filters = document.querySelectorAll('.filter-btn');
+
+filters.forEach(btn => {
+
+    btn.addEventListener('click', () => {
+
+        filters.forEach(b => b.classList.remove('active'));
+
+        btn.classList.add('active');
+
+    });
+
+});
+
+/* ===== COUNTERS ===== */
+
+function animateCounter(id,target){
+
+    let count = 0;
+
+    const element = document.getElementById(id);
+
+    const interval = setInterval(() => {
+
+        count += Math.ceil(target/100);
+
+        if(count >= target){
+            count = target;
+            clearInterval(interval);
+        }
+
+        element.innerText = count.toLocaleString();
+
+    },20);
+
+}
+
+animateCounter('counter1',120000);
+animateCounter('counter2',48000);
+animateCounter('counter3',9500);
+animateCounter('counter4',1200);
+
+/* ===== BUTTON INTERACTIONS ===== */
+
+document.querySelectorAll('.buy-btn').forEach(btn => {
+
+    btn.addEventListener('click', () => {
+
+        btn.innerText = '✓ Adicionado';
+
+        btn.style.background = '#00ff99';
+
+    });
+
+});
+
+document.querySelectorAll('.share-btn').forEach(btn => {
+
+    btn.addEventListener('click', () => {
+
+        navigator.clipboard.writeText(window.location.href);
+
+        btn.innerText = '✓ Link copiado';
+
+    });
+
+});
+
+/* ===== VIP BUTTON ===== */
+
+document.getElementById('vipButton')
+.addEventListener('click', () => {
+
+    alert('🎉 Bem-vindo ao VIP+ do Promify!');
+
+});
+
+/* ===== SCROLL ANIMATION ===== */
+
+const cards = document.querySelectorAll('.card,.testimonial,.stat');
+
+window.addEventListener('scroll', () => {
+
+    cards.forEach(card => {
+
+        const top = card.getBoundingClientRect().top;
+
+        if(top < window.innerHeight - 80){
+
+            card.style.opacity = 1;
+            card.style.transform = 'translateY(0px)';
+
+        }
+
+    });
+
+});
+
+cards.forEach(card => {
+
+    card.style.opacity = 0;
+    card.style.transform = 'translateY(40px)';
+    card.style.transition = '.7s';
+
+});
+
+</script>
 
 </body>
 </html>
