@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>DescontaJá - Cupons & Ofertas</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Inter',sans-serif;
+    background:#0f1115;
+    color:white;
+    overflow-x:hidden;
+}
+
+header{
+    padding:25px 6%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    border-bottom:1px solid rgba(255,255,255,.08);
+    position:sticky;
+    top:0;
+    backdrop-filter:blur(14px);
+    background:rgba(15,17,21,.9);
+    z-index:999;
+}
+
+.logo{
+    font-size:1.8rem;
+    font-weight:800;
+    color:#00e0ff;
+}
+
+nav{
+    display:flex;
+    gap:24px;
+}
+
+nav a{
+    color:#cfcfcf;
+    text-decoration:none;
+    transition:.2s;
+    font-weight:500;
+}
+
+nav a:hover{
+    color:#00e0ff;
+}
+
+.hero{
+    padding:90px 6%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    gap:50px;
+}
+
+.hero-text h1{
+    font-size:4rem;
+    line-height:1.1;
+    margin-bottom:20px;
+}
+
+.hero-text span{
+    color:#00e0ff;
+}
+
+.hero-text p{
+    color:#bcbcbc;
+    line-height:1.7;
+    margin-bottom:30px;
+    max-width:600px;
+}
+
+.search-box{
+    display:flex;
+    gap:10px;
+}
+
+.search-box input{
+    flex:1;
+    padding:18px;
+    border:none;
+    border-radius:16px;
+    background:#1a1d25;
+    color:white;
+    font-size:1rem;
+}
+
+.search-box button{
+    padding:18px 25px;
+    border:none;
+    border-radius:16px;
+    background:#00e0ff;
+    color:#000;
+    font-weight:700;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.search-box button:hover{
+    transform:translateY(-2px);
+}
+
+.hero-card{
+    background:linear-gradient(145deg,#151923,#1f2430);
+    border:1px solid rgba(255,255,255,.08);
+    padding:30px;
+    border-radius:30px;
+    box-shadow:0 20px 40px rgba(0,0,0,.3);
+}
+
+.discount-preview{
+    background:#00e0ff;
+    color:#000;
+    padding:20px;
+    border-radius:20px;
+    margin-bottom:18px;
+}
+
+.discount-preview h2{
+    font-size:2.2rem;
+}
+
+.discount-preview p{
+    font-weight:600;
+}
+
+.section{
+    padding:60px 6%;
+}
+
+.section-title{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:30px;
+}
+
+.section-title h2{
+    font-size:2rem;
+}
+
+.cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:22px;
+}
+
+.card{
+    background:#171b23;
+    border-radius:24px;
+    overflow:hidden;
+    border:1px solid rgba(255,255,255,.07);
+    transition:.25s;
+}
+
+.card:hover{
+    transform:translateY(-6px);
+}
+
+.card img{
+    width:100%;
+    height:180px;
+    object-fit:cover;
+}
+
+.card-content{
+    padding:22px;
+}
+
+.badge{
+    background:#00e0ff;
+    color:#000;
+    font-size:.8rem;
+    padding:6px 10px;
+    border-radius:999px;
+    display:inline-block;
+    font-weight:700;
+    margin-bottom:14px;
+}
+
+.card-content h3{
+    margin-bottom:10px;
+}
+
+.card-content p{
+    color:#b5b5b5;
+    line-height:1.6;
+    margin-bottom:18px;
+}
+
+.price{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:20px;
+}
+
+.old{
+    text-decoration:line-through;
+    color:#888;
+}
+
+.new{
+    font-size:1.5rem;
+    font-weight:800;
+    color:#00e0ff;
+}
+
+.card button{
+    width:100%;
+    border:none;
+    background:#00e0ff;
+    color:#000;
+    padding:15px;
+    border-radius:14px;
+    font-weight:700;
+    cursor:pointer;
+}
+
+.categories{
+    display:flex;
+    gap:16px;
+    flex-wrap:wrap;
+}
+
+.category{
+    background:#171b23;
+    padding:16px 22px;
+    border-radius:18px;
+    border:1px solid rgba(255,255,255,.06);
+    cursor:pointer;
+    transition:.2s;
+}
+
+.category:hover{
+    background:#00e0ff;
+    color:#000;
+}
+
+.newsletter{
+    margin:80px 6%;
+    background:linear-gradient(135deg,#00e0ff,#00b8d4);
+    padding:50px;
+    border-radius:30px;
+    color:#000;
+    text-align:center;
+}
+
+.newsletter h2{
+    font-size:2.5rem;
+    margin-bottom:14px;
+}
+
+.newsletter p{
+    margin-bottom:25px;
+    font-weight:500;
+}
+
+.newsletter input{
+    width:320px;
+    max-width:100%;
+    padding:18px;
+    border:none;
+    border-radius:14px;
+    margin-right:10px;
+}
+
+.newsletter button{
+    padding:18px 26px;
+    border:none;
+    border-radius:14px;
+    background:#000;
+    color:#fff;
+    font-weight:700;
+    cursor:pointer;
+}
+
+footer{
+    padding:50px 6%;
+    color:#8e8e8e;
+    border-top:1px solid rgba(255,255,255,.06);
+    margin-top:60px;
+}
+
+@media(max-width:900px){
+
+    .hero{
+        grid-template-columns:1fr;
+    }
+
+    .hero-text h1{
+        font-size:2.8rem;
+    }
+
+    nav{
+        display:none;
+    }
+
+    .newsletter input{
+        margin-bottom:12px;
+        margin-right:0;
+    }
+}
+</style>
+</head>
+<body>
+
+<header>
+    <div class="logo">DescontaJá</div>
+
+    <nav>
+        <a href="#">Início</a>
+        <a href="#">Cinema</a>
+        <a href="#">Viagens</a>
+        <a href="#">Shows</a>
+        <a href="#">Restaurantes</a>
+    </nav>
+</header>
+
+<section class="hero">
+
+    <div class="hero-text">
+        <h1>Os melhores <span>descontos</span> em um só lugar.</h1>
+
+        <p>
+            Economize em cinemas, viagens, shows, restaurantes,
+            eventos e muito mais com cupons exclusivos e ofertas atualizadas diariamente.
+        </p>
+
+        <div class="search-box">
+            <input type="text" placeholder="Buscar descontos, eventos ou cidades...">
+            <button>Buscar</button>
+        </div>
+    </div>
+
+    <div class="hero-card">
+
+        <div class="discount-preview">
+            <p>Oferta do Dia</p>
+            <h2>50% OFF</h2>
+            <span>Cinemas em todo Brasil</span>
+        </div>
+
+        <div class="discount-preview">
+            <p>Viagens</p>
+            <h2>35% OFF</h2>
+            <span>Pacotes para praia e resorts</span>
+        </div>
+
+        <div class="discount-preview">
+            <p>Shows</p>
+            <h2>2 Ingressos</h2>
+            <span>Pague apenas 1</span>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="section">
+
+    <div class="section-title">
+        <h2>Categorias populares</h2>
+    </div>
+
+    <div class="categories">
+        <div class="category">🎬 Cinema</div>
+        <div class="category">✈️ Viagens</div>
+        <div class="category">🎵 Shows</div>
+        <div class="category">🍔 Restaurantes</div>
+        <div class="category">🏨 Hotéis</div>
+        <div class="category">🎡 Eventos</div>
+    </div>
+
+</section>
+
+<section class="section">
+
+    <div class="section-title">
+        <h2>Ofertas em destaque</h2>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="card-content">
+                <div class="badge">Cinema</div>
+
+                <h3>Ingresso VIP</h3>
+
+                <p>
+                    Aproveite meia entrada e combos promocionais
+                    nos melhores cinemas.
+                </p>
+
+                <div class="price">
+                    <div class="old">R$ 60</div>
+                    <div class="new">R$ 29,90</div>
+                </div>
+
+                <button onclick="alert('Cupom aplicado com sucesso!')">
+                    Pegar desconto
+                </button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="card-content">
+                <div class="badge">Viagem</div>
+
+                <h3>Pacote Nordeste</h3>
+
+                <p>
+                    Resorts, passagens e hospedagem
+                    com até 40% de desconto.
+                </p>
+
+                <div class="price">
+                    <div class="old">R$ 2.500</div>
+                    <div class="new">R$ 1.490</div>
+                </div>
+
+                <button onclick="alert('Oferta salva!')">
+                    Ver oferta
+                </button>
+            </div>
+        </div>
+
+        <div class="card">
+            <img src="https://images.unsplash.com/photo-1501386761578-eac5c94b800a?q=80&w=1200&auto=format&fit=crop">
+
+            <div class="card-content">
+                <div class="badge">Show</div>
+
+                <h3>Festival Music Live</h3>
+
+                <p>
+                    Ingressos promocionais para os maiores
+                    festivais e shows do país.
+                </p>
+
+                <div class="price">
+                    <div class="old">R$ 400</div>
+                    <div class="new">R$ 199</div>
+                </div>
+
+                <button onclick="alert('Ingresso reservado!')">
+                    Comprar agora
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<section class="newsletter">
+
+    <h2>Receba promoções exclusivas</h2>
+
+    <p>
+        Seja avisado primeiro sobre descontos relâmpago e cupons secretos.
+    </p>
+
+    <div>
+        <input type="email" placeholder="Digite seu e-mail">
+        <button onclick="alert('E-mail cadastrado!')">
+            Inscrever-se
+        </button>
+    </div>
+
+</section>
+
+<footer>
+    © 2026 DescontaJá — Todos os direitos reservados.
+</footer>
+
+</body>
+</html>
