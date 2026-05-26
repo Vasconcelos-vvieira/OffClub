@@ -1,10 +1,16 @@
+<!--
+OFFCLUB — Plataforma Premium Interativa
+Versão Ultra Funcional
+-->
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<title>OFFCLUB — Descontos Premium</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>OFFCLUB</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,664 +20,501 @@
 <style>
 
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-html{
-    scroll-behavior:smooth;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 body{
-    background:#060816;
-    color:white;
-    font-family:'Outfit',sans-serif;
-    overflow-x:hidden;
+font-family:'Outfit',sans-serif;
+background:#070b17;
+color:white;
+overflow-x:hidden;
 }
 
-/* ================= CURSOR ================= */
+/* ===== LOADING ===== */
 
-.cursor{
-    width:24px;
-    height:24px;
-    border:2px solid #00e0ff;
-    border-radius:50%;
-    position:fixed;
-    transform:translate(-50%,-50%);
-    pointer-events:none;
-    z-index:999999;
-    transition:transform .12s ease,
-               background .2s ease,
-               width .2s ease,
-               height .2s ease;
+.loader{
+position:fixed;
+inset:0;
+background:#050816;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:999999;
+transition:1s;
 }
 
-.cursor.active{
-    width:60px;
-    height:60px;
-    background:#00e0ff20;
+.loader h1{
+font-size:5rem;
+color:#00e0ff;
+font-family:'Bebas Neue';
+letter-spacing:4px;
+animation:pulse 1s infinite;
 }
 
-/* ================= BACKGROUND ================= */
-
-.bg{
-    position:fixed;
-    width:700px;
-    height:700px;
-    border-radius:50%;
-    filter:blur(140px);
-    z-index:-1;
+@keyframes pulse{
+50%{opacity:.5;}
 }
 
-.bg1{
-    background:#00e0ff20;
-    top:-250px;
-    right:-250px;
-}
-
-.bg2{
-    background:#ff008c15;
-    bottom:-250px;
-    left:-250px;
-}
-
-/* ================= HEADER ================= */
+/* ===== HEADER ===== */
 
 header{
-    position:fixed;
-    top:0;
-    width:100%;
-    z-index:9999;
-    padding:20px 6%;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    backdrop-filter:blur(20px);
-    background:rgba(6,8,22,.7);
-    border-bottom:1px solid rgba(255,255,255,.06);
+position:fixed;
+top:0;
+width:100%;
+padding:20px 6%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+backdrop-filter:blur(20px);
+background:rgba(0,0,0,.4);
+z-index:999;
+border-bottom:1px solid rgba(255,255,255,.05);
 }
 
 .logo{
-    font-family:'Bebas Neue',sans-serif;
-    font-size:3rem;
-    color:#00e0ff;
-    letter-spacing:3px;
+font-family:'Bebas Neue';
+font-size:3rem;
+color:#00e0ff;
+letter-spacing:3px;
 }
 
 nav{
-    display:flex;
-    gap:28px;
+display:flex;
+gap:24px;
 }
 
 nav a{
-    text-decoration:none;
-    color:#d7d7d7;
-    font-weight:600;
-    position:relative;
-    transition:.3s;
-}
-
-nav a::after{
-    content:'';
-    position:absolute;
-    left:0;
-    bottom:-6px;
-    width:0%;
-    height:2px;
-    background:#00e0ff;
-    transition:.3s;
+text-decoration:none;
+color:white;
+font-weight:600;
+transition:.3s;
 }
 
 nav a:hover{
-    color:#00e0ff;
-}
-
-nav a:hover::after{
-    width:100%;
+color:#00e0ff;
 }
 
 .header-buttons{
-    display:flex;
-    gap:12px;
+display:flex;
+gap:12px;
 }
 
 .header-btn{
-    padding:13px 20px;
-    border:none;
-    border-radius:14px;
-    cursor:pointer;
-    font-weight:700;
-    transition:.3s;
+padding:12px 20px;
+border:none;
+border-radius:14px;
+font-weight:700;
+cursor:pointer;
+transition:.3s;
 }
 
 .login{
-    background:#12192b;
-    color:white;
+background:#12192b;
+color:white;
 }
 
 .vip{
-    background:linear-gradient(135deg,#00e0ff,#0077ff);
-    color:black;
+background:linear-gradient(135deg,#00e0ff,#0077ff);
+color:black;
 }
 
 .header-btn:hover{
-    transform:translateY(-3px);
+transform:translateY(-4px);
 }
 
-/* ================= HERO ================= */
+/* ===== HERO ===== */
 
 .hero{
-    min-height:100vh;
-    display:grid;
-    grid-template-columns:1.1fr 1fr;
-    align-items:center;
-    gap:60px;
-    padding:140px 6% 80px;
+min-height:100vh;
+display:grid;
+grid-template-columns:1.1fr 1fr;
+align-items:center;
+padding:140px 6% 80px;
+gap:60px;
 }
 
-.hero-text small{
-    background:#00e0ff12;
-    border:1px solid #00e0ff30;
-    padding:10px 18px;
-    border-radius:999px;
-    color:#00e0ff;
-    font-weight:700;
+.hero h1{
+font-size:6rem;
+line-height:.95;
+font-weight:900;
 }
 
-.hero-text h1{
-    margin-top:28px;
-    font-size:6rem;
-    line-height:.95;
-    font-weight:900;
+.hero span{
+color:#00e0ff;
 }
 
-.hero-text h1 span{
-    color:#00e0ff;
+.hero p{
+margin-top:25px;
+color:#bcbcbc;
+line-height:1.8;
+font-size:1.1rem;
+max-width:650px;
 }
 
-.hero-text p{
-    margin-top:24px;
-    color:#bdbdbd;
-    line-height:1.8;
-    max-width:650px;
-    font-size:1.05rem;
+.search{
+margin-top:30px;
+display:flex;
+gap:14px;
+background:#111827;
+padding:16px;
+border-radius:20px;
 }
 
-.hero-buttons{
-    margin-top:38px;
-    display:flex;
-    gap:18px;
-    flex-wrap:wrap;
+.search input{
+flex:1;
+background:transparent;
+border:none;
+color:white;
+outline:none;
+font-size:1rem;
 }
 
-.main-btn,
-.second-btn{
-    padding:18px 28px;
-    border:none;
-    border-radius:18px;
-    font-weight:800;
-    cursor:pointer;
-    transition:.35s;
+.search button{
+padding:14px 22px;
+border:none;
+border-radius:14px;
+background:#00e0ff;
+font-weight:800;
+cursor:pointer;
 }
 
-.main-btn{
-    background:linear-gradient(135deg,#00e0ff,#0077ff);
-    color:black;
+.hero img{
+width:100%;
+border-radius:30px;
+box-shadow:0 40px 120px rgba(0,0,0,.5);
 }
 
-.second-btn{
-    background:#11182a;
-    color:white;
-}
-
-.main-btn:hover,
-.second-btn:hover{
-    transform:translateY(-6px) scale(1.04);
-}
-
-.hero-image{
-    position:relative;
-}
-
-.hero-image img{
-    width:100%;
-    border-radius:35px;
-    box-shadow:0 40px 120px rgba(0,0,0,.5);
-}
-
-.floating{
-    position:absolute;
-    bottom:-35px;
-    left:-35px;
-    background:#111827;
-    border:1px solid rgba(255,255,255,.08);
-    padding:25px;
-    border-radius:26px;
-    width:280px;
-    animation:float 4s ease-in-out infinite;
-}
-
-@keyframes float{
-    0%{transform:translateY(0px);}
-    50%{transform:translateY(-12px);}
-    100%{transform:translateY(0px);}
-}
-
-.floating h2{
-    color:#00e0ff;
-    font-size:2.6rem;
-}
-
-.floating p{
-    color:#bcbcbc;
-    margin-top:10px;
-}
-
-/* ================= SEARCH ================= */
-
-.search-bar{
-    margin-top:35px;
-    background:#101624;
-    border:1px solid rgba(255,255,255,.05);
-    border-radius:22px;
-    padding:16px;
-    display:flex;
-    gap:14px;
-    flex-wrap:wrap;
-}
-
-.search-bar input{
-    flex:1;
-    min-width:200px;
-    background:transparent;
-    border:none;
-    color:white;
-    font-size:1rem;
-    outline:none;
-}
-
-.search-bar button{
-    padding:14px 22px;
-    border:none;
-    border-radius:14px;
-    background:#00e0ff;
-    color:black;
-    font-weight:800;
-    cursor:pointer;
-}
-
-/* ================= SECTION ================= */
+/* ===== CATEGORIES ===== */
 
 .section{
-    padding:100px 6%;
+padding:100px 6%;
 }
 
 .section-title{
-    margin-bottom:50px;
+margin-bottom:50px;
 }
 
 .section-title h2{
-    font-size:3rem;
-    font-weight:900;
+font-size:3rem;
 }
-
-.section-title p{
-    margin-top:12px;
-    color:#bcbcbc;
-}
-
-/* ================= CATEGORIES ================= */
 
 .categories{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:24px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:24px;
 }
 
 .category{
-    position:relative;
-    overflow:hidden;
-    border-radius:28px;
-    cursor:pointer;
-    transition:.4s;
-    height:320px;
+position:relative;
+overflow:hidden;
+border-radius:28px;
+cursor:pointer;
+height:330px;
+transition:.4s;
 }
 
 .category:hover{
-    transform:translateY(-10px);
+transform:translateY(-10px);
 }
 
 .category img{
-    width:100%;
-    height:100%;
-    object-fit:cover;
-    transition:.5s;
+width:100%;
+height:100%;
+object-fit:cover;
+transition:.5s;
 }
 
 .category:hover img{
-    transform:scale(1.08);
+transform:scale(1.08);
 }
 
 .overlay{
-    position:absolute;
-    inset:0;
-    background:linear-gradient(to top,rgba(0,0,0,.8),transparent);
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
-    padding:25px;
+position:absolute;
+inset:0;
+background:linear-gradient(to top,rgba(0,0,0,.9),transparent);
+display:flex;
+flex-direction:column;
+justify-content:flex-end;
+padding:25px;
 }
 
 .overlay h3{
-    font-size:2rem;
+font-size:2rem;
 }
 
 .overlay p{
-    margin-top:8px;
-    color:#dadada;
+margin-top:10px;
+color:#ddd;
 }
 
-.explore{
-    margin-top:18px;
-    padding:12px 18px;
-    border:none;
-    border-radius:14px;
-    background:#00e0ff;
-    color:black;
-    font-weight:800;
-    cursor:pointer;
-    width:max-content;
-    transition:.3s;
+.overlay button{
+margin-top:18px;
+width:max-content;
+padding:12px 18px;
+border:none;
+border-radius:14px;
+background:#00e0ff;
+font-weight:800;
+cursor:pointer;
 }
 
-.explore:hover{
-    transform:scale(1.06);
-}
-
-/* ================= OFFERS ================= */
+/* ===== OFFERS ===== */
 
 .cards{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:30px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+gap:28px;
 }
 
 .card{
-    background:#101624;
-    border-radius:30px;
-    overflow:hidden;
-    border:1px solid rgba(255,255,255,.05);
-    transition:.4s;
-    position:relative;
+background:#101624;
+border-radius:30px;
+overflow:hidden;
+border:1px solid rgba(255,255,255,.05);
+transition:.4s;
+position:relative;
 }
 
 .card:hover{
-    transform:translateY(-12px);
+transform:translateY(-10px);
 }
 
 .card img{
-    width:100%;
-    height:240px;
-    object-fit:cover;
+width:100%;
+height:240px;
+object-fit:cover;
 }
 
 .favorite{
-    position:absolute;
-    top:18px;
-    right:18px;
-    width:48px;
-    height:48px;
-    border-radius:50%;
-    background:rgba(0,0,0,.45);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    cursor:pointer;
-    transition:.3s;
-    font-size:1.1rem;
+position:absolute;
+top:18px;
+right:18px;
+width:46px;
+height:46px;
+border-radius:50%;
+background:rgba(0,0,0,.5);
+display:flex;
+justify-content:center;
+align-items:center;
+cursor:pointer;
+font-size:1.1rem;
 }
 
 .favorite.active{
-    background:#ff2f77;
+background:#ff2f77;
 }
 
 .card-content{
-    padding:28px;
+padding:26px;
 }
 
 .badge{
-    display:inline-block;
-    background:#00e0ff;
-    color:black;
-    padding:8px 14px;
-    border-radius:999px;
-    font-size:.8rem;
-    font-weight:800;
+display:inline-block;
+background:#00e0ff;
+color:black;
+padding:8px 14px;
+border-radius:999px;
+font-size:.8rem;
+font-weight:800;
 }
 
 .card-content h3{
-    margin-top:18px;
-    font-size:1.8rem;
+margin-top:18px;
+font-size:1.8rem;
 }
 
 .card-content p{
-    margin-top:14px;
-    color:#bcbcbc;
-    line-height:1.7;
+margin-top:12px;
+line-height:1.7;
+color:#bcbcbc;
 }
 
 .price{
-    margin-top:24px;
-    display:flex;
-    gap:14px;
-    align-items:center;
+margin-top:20px;
+display:flex;
+gap:14px;
+align-items:center;
 }
 
 .old{
-    text-decoration:line-through;
-    color:#777;
+text-decoration:line-through;
+color:#777;
 }
 
 .new{
-    color:#00e0ff;
-    font-size:2rem;
-    font-weight:900;
+font-size:2rem;
+font-weight:900;
+color:#00e0ff;
 }
 
-.card-buttons{
-    margin-top:24px;
-    display:flex;
-    gap:14px;
+.buttons{
+margin-top:24px;
+display:flex;
+gap:12px;
 }
 
 .buy,
 .share{
-    flex:1;
-    padding:15px;
-    border:none;
-    border-radius:16px;
-    cursor:pointer;
-    font-weight:800;
-    transition:.3s;
+flex:1;
+padding:15px;
+border:none;
+border-radius:16px;
+cursor:pointer;
+font-weight:800;
+transition:.3s;
 }
 
 .buy{
-    background:linear-gradient(135deg,#00e0ff,#0077ff);
-    color:black;
+background:linear-gradient(135deg,#00e0ff,#0077ff);
+color:black;
 }
 
 .share{
-    background:#182238;
-    color:white;
+background:#1a2338;
+color:white;
 }
 
 .buy:hover,
 .share:hover{
-    transform:scale(1.04);
+transform:scale(1.04);
 }
 
-/* ================= COUNTERS ================= */
+/* ===== LOGIN MODAL ===== */
+
+.modal{
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.75);
+display:none;
+justify-content:center;
+align-items:center;
+z-index:99999;
+}
+
+.modal-box{
+width:400px;
+max-width:95%;
+background:#111827;
+padding:35px;
+border-radius:30px;
+}
+
+.modal-box h2{
+font-size:2rem;
+margin-bottom:24px;
+}
+
+.modal-box input{
+width:100%;
+padding:16px;
+margin-bottom:14px;
+background:#1c2538;
+border:none;
+border-radius:14px;
+color:white;
+}
+
+.modal-box button{
+width:100%;
+padding:16px;
+border:none;
+border-radius:14px;
+background:#00e0ff;
+font-weight:800;
+cursor:pointer;
+}
+
+.close{
+margin-top:15px;
+background:#1b2335 !important;
+color:white;
+}
+
+/* ===== NOTIFICATION ===== */
+
+.toast{
+position:fixed;
+top:30px;
+right:-500px;
+background:#101624;
+padding:20px 24px;
+border-radius:18px;
+border:1px solid rgba(255,255,255,.08);
+z-index:999999;
+transition:.5s;
+}
+
+.toast.show{
+right:30px;
+}
+
+/* ===== COUNTERS ===== */
 
 .stats{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-    gap:24px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:24px;
 }
 
 .stat{
-    background:#101624;
-    border-radius:28px;
-    padding:40px;
-    text-align:center;
-    border:1px solid rgba(255,255,255,.05);
-    transition:.3s;
+background:#101624;
+padding:40px;
+border-radius:28px;
+text-align:center;
+transition:.3s;
 }
 
 .stat:hover{
-    transform:translateY(-8px);
+transform:translateY(-8px);
 }
 
 .stat h2{
-    color:#00e0ff;
-    font-size:3rem;
+font-size:3rem;
+color:#00e0ff;
 }
 
-.stat p{
-    margin-top:10px;
-    color:#bcbcbc;
-}
-
-/* ================= NEWSLETTER ================= */
-
-.newsletter{
-    margin:100px 6%;
-    background:linear-gradient(135deg,#00e0ff,#0077ff);
-    padding:80px;
-    border-radius:40px;
-    text-align:center;
-    color:black;
-    position:relative;
-    overflow:hidden;
-}
-
-.newsletter h2{
-    font-size:3.5rem;
-    font-weight:900;
-}
-
-.newsletter p{
-    margin-top:15px;
-    font-size:1.05rem;
-}
-
-.news-form{
-    margin-top:35px;
-    display:flex;
-    justify-content:center;
-    gap:16px;
-    flex-wrap:wrap;
-}
-
-.news-form input{
-    width:380px;
-    max-width:100%;
-    padding:20px;
-    border:none;
-    border-radius:18px;
-    font-size:1rem;
-}
-
-.news-form button{
-    padding:20px 28px;
-    border:none;
-    border-radius:18px;
-    background:black;
-    color:white;
-    font-weight:800;
-    cursor:pointer;
-}
-
-/* ================= FOOTER ================= */
+/* ===== FOOTER ===== */
 
 footer{
-    padding:70px 6%;
-    border-top:1px solid rgba(255,255,255,.05);
-    display:flex;
-    justify-content:space-between;
-    flex-wrap:wrap;
-    gap:30px;
-    color:#a0a0a0;
+padding:70px 6%;
+border-top:1px solid rgba(255,255,255,.05);
+margin-top:80px;
+display:flex;
+justify-content:space-between;
+flex-wrap:wrap;
+gap:20px;
+color:#a7a7a7;
 }
 
-.footer-links{
-    display:flex;
-    gap:20px;
-    flex-wrap:wrap;
-}
-
-.footer-links a{
-    color:#d7d7d7;
-    text-decoration:none;
-}
-
-.footer-links a:hover{
-    color:#00e0ff;
-}
-
-/* ================= POPUP ================= */
-
-.popup{
-    position:fixed;
-    top:30px;
-    right:-500px;
-    background:#101624;
-    padding:20px 24px;
-    border-radius:18px;
-    border:1px solid rgba(255,255,255,.08);
-    z-index:999999;
-    transition:.5s;
-}
-
-.popup.show{
-    right:30px;
-}
-
-/* ================= RESPONSIVO ================= */
+/* ===== RESPONSIVO ===== */
 
 @media(max-width:1000px){
 
-    .hero{
-        grid-template-columns:1fr;
-    }
+.hero{
+grid-template-columns:1fr;
+}
 
-    .hero-text h1{
-        font-size:4.6rem;
-    }
+.hero h1{
+font-size:4.5rem;
+}
 
 }
 
 @media(max-width:700px){
 
-    nav{
-        display:none;
-    }
+nav{
+display:none;
+}
 
-    .hero-text h1{
-        font-size:3.3rem;
-    }
+.hero h1{
+font-size:3.2rem;
+}
 
-    .section-title h2{
-        font-size:2.2rem;
-    }
-
-    .newsletter{
-        padding:45px 25px;
-    }
-
-    .newsletter h2{
-        font-size:2.3rem;
-    }
+.section-title h2{
+font-size:2.2rem;
+}
 
 }
 
@@ -679,617 +522,481 @@ footer{
 </head>
 <body>
 
-<div class="cursor"></div>
+<!-- LOADER -->
 
-<div class="bg bg1"></div>
-<div class="bg bg2"></div>
-
-<div class="popup" id="popup">
-    🎉 Oferta adicionada aos favoritos!
+<div class="loader" id="loader">
+<h1>OFFCLUB</h1>
 </div>
+
+<!-- TOAST -->
+
+<div class="toast" id="toast">
+🎉 Oferta adicionada aos favoritos!
+</div>
+
+<!-- LOGIN -->
+
+<div class="modal" id="loginModal">
+
+<div class="modal-box">
+
+<h2>Entrar no OFFCLUB</h2>
+
+<input type="text" id="username" placeholder="Seu nome">
+
+<input type="email" placeholder="Seu e-mail">
+
+<button onclick="login()">
+Entrar
+</button>
+
+<button class="close" onclick="closeModal()">
+Fechar
+</button>
+
+</div>
+
+</div>
+
+<!-- HEADER -->
 
 <header>
 
-    <div class="logo">OFFCLUB</div>
+<div class="logo">
+OFFCLUB
+</div>
 
-    <nav>
-        <a href="#cinema">Cinema</a>
-        <a href="#shows">Shows</a>
-        <a href="#viagens">Viagens</a>
-        <a href="#hoteis">Hotéis</a>
-        <a href="#restaurantes">Restaurantes</a>
-    </nav>
+<nav>
 
-    <div class="header-buttons">
+<a href="#">Cinema</a>
+<a href="#">Shows</a>
+<a href="#">Viagens</a>
+<a href="#">Hotéis</a>
+<a href="#">Restaurantes</a>
 
-        <button class="header-btn login">
-            Entrar
-        </button>
+</nav>
 
-        <button class="header-btn vip">
-            OFFCLUB+
-        </button>
+<div class="header-buttons">
 
-    </div>
+<button class="header-btn login" onclick="openModal()">
+Entrar
+</button>
+
+<button class="header-btn vip">
+OFFCLUB+
+</button>
+
+</div>
 
 </header>
 
+<!-- HERO -->
+
 <section class="hero">
 
-    <div class="hero-text">
+<div>
 
-        <small>🔥 +50 mil descontos ativos</small>
+<h1>
+Descontos
+<span>premium</span>
+para experiências incríveis.
+</h1>
 
-        <h1>
-            Experiências
-            <span>premium</span>
-            com descontos absurdos.
-        </h1>
+<p>
+Economize em cinemas, shows, viagens,
+restaurantes e hotéis com uma plataforma
+interativa inspirada em Netflix, Spotify e Airbnb.
+</p>
 
-        <p>
-            Descubra ofertas exclusivas em cinemas,
-            shows, hotéis, restaurantes e viagens
-            em uma plataforma moderna, rápida e totalmente interativa.
-        </p>
+<div class="search">
 
-        <div class="search-bar">
+<input type="text" placeholder="Buscar promoções...">
 
-            <input type="text" placeholder="Buscar ofertas, lugares ou eventos...">
+<button onclick="showToast('🔍 Buscando promoções...')">
+Buscar
+</button>
 
-            <button id="searchBtn">
-                Buscar
-            </button>
+</div>
 
-        </div>
+</div>
 
-        <div class="hero-buttons">
+<div>
 
-            <button class="main-btn">
-                Explorar ofertas
-            </button>
+<img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?q=80&w=1600&auto=format&fit=crop">
 
-            <button class="second-btn">
-                Ver categorias
-            </button>
-
-        </div>
-
-    </div>
-
-    <div class="hero-image">
-
-        <img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439?q=80&w=1600&auto=format&fit=crop">
-
-        <div class="floating">
-            <h2>80% OFF</h2>
-
-            <p>
-                Cupons exclusivos para experiências premium.
-            </p>
-        </div>
-
-    </div>
+</div>
 
 </section>
+
+<!-- CATEGORIES -->
 
 <section class="section">
 
-    <div class="section-title">
-        <h2>Categorias</h2>
-        <p>Explore experiências incríveis com interações em tempo real.</p>
-    </div>
+<div class="section-title">
+<h2>Categorias</h2>
+</div>
 
-    <div class="categories">
+<div class="categories">
 
-        <!-- CINEMA -->
+<!-- CINEMA -->
 
-        <div class="category" id="cinema">
+<div class="category">
 
-            <img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1400&auto=format&fit=crop">
+<img src="https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?q=80&w=1400&auto=format&fit=crop">
 
-            <div class="overlay">
+<div class="overlay">
 
-                <h3>🍿 Cinema</h3>
+<h3>🍿 Cinema</h3>
 
-                <p>
-                    Ingressos VIP e combos promocionais.
-                </p>
+<p>
+Ingressos e combos VIP.
+</p>
 
-                <button class="explore">
-                    Explorar
-                </button>
+<button onclick="showToast('🎬 Abrindo cinema...')">
+Explorar
+</button>
 
-            </div>
+</div>
 
-        </div>
+</div>
 
-        <!-- SHOWS -->
+<!-- SHOWS -->
 
-        <div class="category" id="shows">
+<div class="category">
 
-            <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1400&auto=format&fit=crop">
+<img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1400&auto=format&fit=crop">
 
-            <div class="overlay">
+<div class="overlay">
 
-                <h3>🎵 Shows</h3>
+<h3>🎵 Shows</h3>
 
-                <p>
-                    Festivais e eventos com descontos exclusivos.
-                </p>
+<p>
+Festivais e eventos exclusivos.
+</p>
 
-                <button class="explore">
-                    Ver eventos
-                </button>
+<button onclick="showToast('🎵 Abrindo shows...')">
+Ver eventos
+</button>
 
-            </div>
+</div>
 
-        </div>
+</div>
 
-        <!-- VIAGENS -->
+<!-- VIAGENS -->
 
-        <div class="category" id="viagens">
+<div class="category">
 
-            <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1400&auto=format&fit=crop">
+<img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?q=80&w=1400&auto=format&fit=crop">
 
-            <div class="overlay">
+<div class="overlay">
 
-                <h3>✈️ Viagens</h3>
+<h3>✈️ Viagens</h3>
 
-                <p>
-                    Resorts, praias e destinos paradisíacos.
-                </p>
+<p>
+Destinos paradisíacos.
+</p>
 
-                <button class="explore">
-                    Descobrir
-                </button>
+<button onclick="showToast('✈️ Procurando viagens...')">
+Descobrir
+</button>
 
-            </div>
+</div>
 
-        </div>
+</div>
 
-        <!-- HOTÉIS -->
+<!-- HOTEIS -->
 
-        <div class="category" id="hoteis">
+<div class="category">
 
-            <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1400&auto=format&fit=crop">
+<img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=1400&auto=format&fit=crop">
 
-            <div class="overlay">
+<div class="overlay">
 
-                <h3>🏨 Hotéis</h3>
+<h3>🏨 Hotéis</h3>
 
-                <p>
-                    Hospedagens premium com até 70% OFF.
-                </p>
+<p>
+Hospedagens premium.
+</p>
 
-                <button class="explore">
-                    Reservar
-                </button>
+<button onclick="showToast('🏨 Abrindo hotéis...')">
+Reservar
+</button>
 
-            </div>
+</div>
 
-        </div>
+</div>
 
-        <!-- RESTAURANTES -->
+<!-- RESTAURANTES -->
 
-        <div class="category" id="restaurantes">
+<div class="category">
 
-            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1400&auto=format&fit=crop">
+<img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=1400&auto=format&fit=crop">
 
-            <div class="overlay">
+<div class="overlay">
 
-                <h3>🍔 Restaurantes</h3>
+<h3>🍔 Restaurantes</h3>
 
-                <p>
-                    Experiências gastronômicas exclusivas.
-                </p>
+<p>
+Experiências gastronômicas.
+</p>
 
-                <button class="explore">
-                    Ver menus
-                </button>
+<button onclick="showToast('🍔 Abrindo restaurantes...')">
+Ver menus
+</button>
 
-            </div>
+</div>
 
-        </div>
+</div>
 
-    </div>
+</div>
 
 </section>
+
+<!-- OFFERS -->
 
 <section class="section">
 
-    <div class="section-title">
-        <h2>Ofertas populares</h2>
-        <p>As promoções mais acessadas da semana.</p>
-    </div>
+<div class="section-title">
+<h2>Ofertas populares</h2>
+</div>
 
-    <div class="cards">
+<div class="cards">
 
-        <div class="card">
+<div class="card">
 
-            <div class="favorite">
-                ❤
-            </div>
+<div class="favorite" onclick="favorite(this)">
+❤</div>
 
-            <img src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?q=80&w=1400&auto=format&fit=crop">
+<img src="https://images.unsplash.com/photo-1524985069026-dd778a71c7b4?q=80&w=1400&auto=format&fit=crop">
 
-            <div class="card-content">
+<div class="card-content">
 
-                <div class="badge">
-                    🎬 CINEMA
-                </div>
+<div class="badge">
+🎬 CINEMA
+</div>
 
-                <h3>Combo VIP OFFCLUB</h3>
+<h3>Combo VIP</h3>
 
-                <p>
-                    Pipoca gigante + refrigerante + ingresso premium.
-                </p>
+<p>
+Ingresso premium + combo gigante.
+</p>
 
-                <div class="price">
+<div class="price">
 
-                    <div class="old">
-                        R$ 89
-                    </div>
+<div class="old">
+R$ 89
+</div>
 
-                    <div class="new">
-                        R$ 39
-                    </div>
+<div class="new">
+R$ 39
+</div>
 
-                </div>
+</div>
 
-                <div class="card-buttons">
+<div class="buttons">
 
-                    <button class="buy">
-                        Resgatar
-                    </button>
+<button class="buy" onclick="buy(this)">
+Resgatar
+</button>
 
-                    <button class="share">
-                        Compartilhar
-                    </button>
+<button class="share" onclick="shareLink(this)">
+Compartilhar
+</button>
 
-                </div>
+</div>
 
-            </div>
+</div>
 
-        </div>
+</div>
 
-        <div class="card">
-
-            <div class="favorite">
-                ❤
-            </div>
-
-            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1400&auto=format&fit=crop">
-
-            <div class="card-content">
-
-                <div class="badge">
-                    ✈️ VIAGEM
-                </div>
-
-                <h3>Resort Paradise</h3>
-
-                <p>
-                    Hospedagem premium com café incluso.
-                </p>
-
-                <div class="price">
-
-                    <div class="old">
-                        R$ 3.500
-                    </div>
-
-                    <div class="new">
-                        R$ 1.890
-                    </div>
-
-                </div>
-
-                <div class="card-buttons">
-
-                    <button class="buy">
-                        Reservar
-                    </button>
-
-                    <button class="share">
-                        Compartilhar
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-        <div class="card">
-
-            <div class="favorite">
-                ❤
-            </div>
-
-            <img src="https://images.unsplash.com/photo-1493225457124-a3eb161ffa5f?q=80&w=1400&auto=format&fit=crop">
-
-            <div class="card-content">
-
-                <div class="badge">
-                    🎵 SHOW
-                </div>
-
-                <h3>Festival Summer Beats</h3>
-
-                <p>
-                    Ingressos promocionais para festivais exclusivos.
-                </p>
-
-                <div class="price">
-
-                    <div class="old">
-                        R$ 490
-                    </div>
-
-                    <div class="new">
-                        R$ 199
-                    </div>
-
-                </div>
-
-                <div class="card-buttons">
-
-                    <button class="buy">
-                        Comprar
-                    </button>
-
-                    <button class="share">
-                        Compartilhar
-                    </button>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </div>
+</div>
 
 </section>
+
+<!-- STATS -->
 
 <section class="section">
 
-    <div class="section-title">
-        <h2>Números da OFFCLUB</h2>
-        <p>Milhares de pessoas economizando todos os dias.</p>
-    </div>
+<div class="section-title">
+<h2>Números OFFCLUB</h2>
+</div>
 
-    <div class="stats">
+<div class="stats">
 
-        <div class="stat">
-            <h2 id="count1">0</h2>
-            <p>Usuários ativos</p>
-        </div>
+<div class="stat">
+<h2 id="count1">0</h2>
+<p>Usuários ativos</p>
+</div>
 
-        <div class="stat">
-            <h2 id="count2">0</h2>
-            <p>Cupons utilizados</p>
-        </div>
+<div class="stat">
+<h2 id="count2">0</h2>
+<p>Cupons usados</p>
+</div>
 
-        <div class="stat">
-            <h2 id="count3">0</h2>
-            <p>Parceiros premium</p>
-        </div>
+<div class="stat">
+<h2 id="count3">0</h2>
+<p>Parceiros</p>
+</div>
 
-        <div class="stat">
-            <h2 id="count4">0</h2>
-            <p>Ofertas disponíveis</p>
-        </div>
+<div class="stat">
+<h2 id="count4">0</h2>
+<p>Ofertas</p>
+</div>
 
-    </div>
-
-</section>
-
-<section class="newsletter">
-
-    <h2>
-        Entre para o OFFCLUB+
-    </h2>
-
-    <p>
-        Receba promoções secretas e descontos exclusivos antes de todo mundo.
-    </p>
-
-    <div class="news-form">
-
-        <input type="email" placeholder="Digite seu e-mail">
-
-        <button id="vipJoin">
-            Entrar agora
-        </button>
-
-    </div>
+</div>
 
 </section>
+
+<!-- FOOTER -->
 
 <footer>
 
-    <div>
+<div>
 
-        <h2 style="color:white;">
-            OFFCLUB
-        </h2>
+<h2 style="color:white;">
+OFFCLUB
+</h2>
 
-        <p>
-            Sua plataforma premium de descontos e experiências.
-        </p>
+<p>
+Experiências premium com descontos reais.
+</p>
 
-    </div>
+</div>
 
-    <div class="footer-links">
-
-        <a href="#">
-            Privacidade
-        </a>
-
-        <a href="#">
-            Termos
-        </a>
-
-        <a href="#">
-            Suporte
-        </a>
-
-        <a href="#">
-            Contato
-        </a>
-
-    </div>
+<div>
+© 2026 OFFCLUB
+</div>
 
 </footer>
 
 <script>
 
-/* ================= CURSOR ================= */
+/* ===== LOADING ===== */
 
-const cursor = document.querySelector('.cursor');
+window.onload = () => {
 
-document.addEventListener('mousemove', e => {
+setTimeout(() => {
 
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
+document.getElementById('loader').style.opacity = '0';
 
-});
+setTimeout(() => {
 
-document.querySelectorAll('button,a,.card,.category').forEach(el => {
+document.getElementById('loader').style.display = 'none';
 
-    el.addEventListener('mouseenter', () => {
-        cursor.classList.add('active');
-    });
+},1000);
 
-    el.addEventListener('mouseleave', () => {
-        cursor.classList.remove('active');
-    });
+},1500);
 
-});
+}
 
-/* ================= FAVORITOS ================= */
+/* ===== TOAST ===== */
 
-const favorites = document.querySelectorAll('.favorite');
-const popup = document.getElementById('popup');
+function showToast(text){
 
-favorites.forEach(fav => {
+const toast = document.getElementById('toast');
 
-    fav.addEventListener('click', () => {
+toast.innerHTML = text;
 
-        fav.classList.toggle('active');
+toast.classList.add('show');
 
-        popup.classList.add('show');
+setTimeout(() => {
 
-        setTimeout(() => {
-            popup.classList.remove('show');
-        },2000);
+toast.classList.remove('show');
 
-    });
+},2500);
 
-});
+}
 
-/* ================= BOTÕES ================= */
+/* ===== LOGIN ===== */
 
-document.querySelectorAll('.buy').forEach(btn => {
+function openModal(){
 
-    btn.addEventListener('click', () => {
+document.getElementById('loginModal').style.display = 'flex';
 
-        btn.innerText = '✓ Adicionado';
-        btn.style.background = '#00ff99';
+}
 
-    });
+function closeModal(){
 
-});
+document.getElementById('loginModal').style.display = 'none';
 
-document.querySelectorAll('.share').forEach(btn => {
+}
 
-    btn.addEventListener('click', () => {
+function login(){
 
-        navigator.clipboard.writeText(window.location.href);
+const username =
+document.getElementById('username').value;
 
-        btn.innerText = '✓ Link copiado';
+localStorage.setItem('offclubUser',username);
 
-    });
+showToast('👋 Bem-vindo, ' + username);
 
-});
+closeModal();
 
-/* ================= BUSCA ================= */
+}
 
-document.getElementById('searchBtn')
-.addEventListener('click', () => {
+/* ===== FAVORITES ===== */
 
-    alert('🔍 Procurando as melhores ofertas para você...');
+function favorite(el){
 
-});
+el.classList.toggle('active');
 
-/* ================= NEWSLETTER ================= */
+showToast('❤️ Oferta adicionada aos favoritos');
 
-document.getElementById('vipJoin')
-.addEventListener('click', () => {
+}
 
-    alert('🎉 Bem-vindo ao OFFCLUB+');
+/* ===== BUY ===== */
 
-});
+function buy(el){
 
-/* ================= CONTADORES ================= */
+el.innerHTML = '✓ Adicionado';
+
+el.style.background = '#00ff99';
+
+showToast('🎉 Oferta resgatada!');
+
+}
+
+/* ===== SHARE ===== */
+
+function shareLink(el){
+
+navigator.clipboard.writeText(window.location.href);
+
+el.innerHTML = '✓ Copiado';
+
+showToast('🔗 Link copiado!');
+
+}
+
+/* ===== COUNTERS ===== */
 
 function counter(id,target){
 
-    let count = 0;
+let count = 0;
 
-    const el = document.getElementById(id);
+const el = document.getElementById(id);
 
-    const interval = setInterval(() => {
+const interval = setInterval(() => {
 
-        count += Math.ceil(target/100);
+count += Math.ceil(target/100);
 
-        if(count >= target){
+if(count >= target){
 
-            count = target;
-            clearInterval(interval);
+count = target;
+clearInterval(interval);
 
-        }
+}
 
-        el.innerText = count.toLocaleString();
+el.innerHTML = count.toLocaleString();
 
-    },20);
+},20);
 
 }
 
 counter('count1',120000);
-counter('count2',980000);
+counter('count2',950000);
 counter('count3',3200);
 counter('count4',58000);
-
-/* ================= ANIMAÇÃO SCROLL ================= */
-
-const elements = document.querySelectorAll('.card,.category,.stat');
-
-elements.forEach(el => {
-
-    el.style.opacity = 0;
-    el.style.transform = 'translateY(40px)';
-    el.style.transition = '.7s';
-
-});
-
-window.addEventListener('scroll', () => {
-
-    elements.forEach(el => {
-
-        const top = el.getBoundingClientRect().top;
-
-        if(top < window.innerHeight - 80){
-
-            el.style.opacity = 1;
-            el.style.transform = 'translateY(0px)';
-
-        }
-
-    });
-
-});
 
 </script>
 
